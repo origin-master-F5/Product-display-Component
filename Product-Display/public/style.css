@@ -99,6 +99,17 @@ x-star-rating > .star.full::after {
   font-weight: 400;
 }
 
+.up-icon {
+  font-size: 22px;
+  color: #0457c8;
+  margin-left: 10px;
+}
+
+.down-icon {
+  font-size: 22px;
+  color: #0457c8;
+  margin-left: 10px;
+}
 
 .display-container-col-2 {
   
