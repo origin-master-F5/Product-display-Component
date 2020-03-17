@@ -11,7 +11,7 @@ const productSchema = new mongoose.Schema({
   release_date: String,
   esrb_rating: String,
   price: String,
-  images: String,
+  images: [String],
   compatible_platforms: [String],
   software_format: [String],
   geek_squad: String,
