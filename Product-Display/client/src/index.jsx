@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Stars from './components/Stars.jsx';
 
 class App extends React.Component {
 constructor(props) {
@@ -53,6 +54,7 @@ render() {
                 </div>
               </div>
               <div className="display-user-generated-content">
+                <Stars />
 
               </div>
               
