@@ -4,6 +4,8 @@ mongoose.Promise = require('bluebird');
 
 const productSchema = new mongoose.Schema({
   name: String,
+  category: String,
+  sub_category: String,
   model: String,
   publisher: String,
   sku: String,

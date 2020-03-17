@@ -4,6 +4,8 @@ const Product = require('../../db-mongodb/model');
 const data = [
   {
     name: 'Mario Kart 8 Deluxe - Nintendo Switch',
+    category: 'Nintendo Switch',
+    sub_category: 'Nintendo Swtich Games',
     model: 'HACPAABPA',
     publisher: 'Nintendo',
     sku: '1',
