@@ -25,9 +25,10 @@ render() {
          <h3 className="display-star-rate">4.9</h3>
          <h4 className="display-star-review">(20,317 Reviews) </h4>
          {this.state.expanded === true ? 
-          <i className="down-icon ion-chevron-down"></i> :
-          <i className="up-icon ion-chevron-up"></i>
+          <i className="up-icon ion-chevron-up"></i> :
+          <i className="down-icon ion-chevron-down"></i>
          }  
+         <h4 className="display-questions"> 27 Answered Questions</h4>
        </div>
     </div>
   )

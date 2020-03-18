@@ -1,14 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Stars from './components/Stars.jsx';
+import ProductView from './components/ProductView.jsx';
+import ProductImageList from './components/ProductImageList.jsx';
+import Axios from 'axios';
 
 class App extends React.Component {
 constructor(props) {
   super(props);
   this.state = {
-   product: []
+   product: [],
+   item_view: ""
   };
+  this.getProducts = this.getProducts.bind(this);
+}
 
+//refactor to get items that match search criteria
+
+getProducts(){
+  Axios.get('/product')
+  .then(results => {
+   this.setState({
+     product: results.data,
+     item_view: results.data[0].images[0]
+   }, () => console.log('product', this.state.item_view))
+  })
+}
+
+componentDidMount(){
+  this.getProducts()
 }
 
 render() {
@@ -18,10 +38,10 @@ render() {
         <div className="display-nav-row">
             <div className="display-nav">
                 <ol className="display-list">
-                <li>Best Buy</li>
-                <li>Video Games</li>
-                <li>Nintendo Switch</li>
-                <li>Nintendo Switch Games</li>
+                <li className="display-category">Best Buy</li>
+                <li className="display-category">Video Games</li>
+                <li className="display-category">Nintendo Switch</li>
+                <li className="display-category">Nintendo Switch Games</li>
                 </ol>
             </div>
         </div>
@@ -55,10 +75,15 @@ render() {
               </div>
               <div className="display-user-generated-content">
                 <Stars />
-
+              <div className="display-divider"></div>
               </div>
-              
-              {/* put component here */}
+              <div className="display-media-gallery">
+                <div className="display-product-primary-container">
+                  <ProductView image={this.state.item_view}/>
+                  {/* put component here */}
+                </div>
+                <ProductImageList items={this.state.product}/>
+              </div>
 
            </div>
 
