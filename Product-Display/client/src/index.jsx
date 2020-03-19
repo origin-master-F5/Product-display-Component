@@ -49,40 +49,49 @@ render() {
           <div className="display-container-col-1">
               <div className='display-product-title'>
                 <div className="display-sku-title">
-                <h2 className="display-sku-h2">Mario Kart 8 Deluxe - Nintendo Switch</h2>
+                <span className="display-sku-h2">Mario Kart 8 Deluxe - Nintendo Switch</span>
                 </div>
                 <div className="display-data-layout">
-                    <span className="display-product-data">
-                      <strong>Model:</strong>
-                    </span>
-                    <span className="display-product-data">HACPAABPA</span>
-                    <span className="display-product-data">
-                      <strong> Publisher:</strong></span>
-                    <span className="display-product-data">Nintendo</span>
-                    <span className="display-product-data">
-                      <strong> SKU:</strong>
-                    </span>
-                    <span className="display-product-data">5723304</span>
-                    <span className="display-product-data">
-                      <strong> Release Date:</strong>
-                    </span>
-                    <span className="display-product-data">04/28/2017</span>
-                    <div className="display-product-data-lastline">
-                      <strong>ESRB Rating:</strong>
-                      <span className="display-product-data-everyone"> E (Everyone)</span>
+                    <div className="display-model-product-data" >
+                        <span className="display-product-data">
+                        <strong>Model:</strong>
+                        <span className="display-product-data"> HACPAABPA</span></span>
+                    </div>
+                    <div className="display-model-product-data" >
+                        <span className="display-product-data">
+                        <strong>Publisher:</strong>
+                        <span className="display-product-data"> Nintendo</span></span>
+                    </div>
+                    <div className="display-model-product-data" >
+                        <span className="display-product-data">
+                        <strong>SKU:</strong>
+                        <span className="display-product-data"> 5723304</span></span>
+                    </div>
+                    <div className="display-model-product-data" >
+                        <span className="display-product-data">
+                        <strong>Release Date:</strong>
+                        <span className="display-product-data"> 04/28/2017</span></span>
+                    </div>
+                    <div className="display-model-product-data" >
+                        <span className="display-product-data">
+                        <strong>ESRB Rating:</strong>
+                        <span className="display-product-data-everyone"> E (Everyone)</span>
+                        </span>
                     </div>
                 </div>
               </div>
-              <div className="display-user-generated-content">
                 <Stars />
               <div className="display-divider"></div>
-              </div>
+             
               <div className="display-media-gallery">
                 <div className="display-product-primary-container">
                   <ProductView image={this.state.item_view}/>
                   {/* put component here */}
                 </div>
                 <ProductImageList items={this.state.product}/>
+                <div className="display-media-links-container">
+                 <span className="display-media-links-interactive-tour">Interactive Tour and documents ></span>
+                </div>
               </div>
 
            </div>

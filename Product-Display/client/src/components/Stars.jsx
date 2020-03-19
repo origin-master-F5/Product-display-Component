@@ -15,20 +15,26 @@ render() {
   return (
     <div>
        <div className="display-stars">
-         <x-star-rating>
-            <div className="star full"></div>
-            <div className="star full"></div>
-            <div className="star full"></div>
-            <div className="star full"></div>
-            <div className="star full"></div>  
-         </x-star-rating>
-         <h3 className="display-star-rate">4.9</h3>
-         <h4 className="display-star-review">(20,317 Reviews) </h4>
-         {this.state.expanded === true ? 
-          <i className="up-icon ion-chevron-up"></i> :
-          <i className="down-icon ion-chevron-down"></i>
-         }  
-         <h4 className="display-questions"> 27 Answered Questions</h4>
+        <div className="display-ratings-reviews">
+            <x-star-rating>
+                <div className="star full"></div>
+                <div className="star full"></div>
+                <div className="star full"></div>
+                <div className="star full"></div>
+                <div className="star full"></div>  
+            </x-star-rating>
+            <div className="display-c-reviews">
+                <span className="display-star-rate">4.9</span>
+                <span className="display-star-review">(20,317 Reviews) </span>
+            </div>
+        </div>
+        <div className="display-answered-questions">
+            {this.state.expanded === true ? 
+            <i className="up-icon ion-chevron-up"></i> :
+            <i className="down-icon ion-chevron-down"></i>
+            }  
+            <span className="display-questions"> 27 Answered Questions</span>
+        </div>
        </div>
     </div>
   )
