@@ -13,6 +13,7 @@ constructor(props) {
    item_view: ""
   };
   this.getProducts = this.getProducts.bind(this);
+  this.changeProduct = this.changeProduct.bind(this);
 }
 
 //refactor to get items that match search criteria
@@ -24,6 +25,12 @@ getProducts(){
      product: results.data,
      item_view: results.data[0].images[0]
    }, () => console.log('product', this.state.item_view))
+  })
+}
+
+changeProduct(e) {
+  this.setState({
+    item_view: e.target.id
   })
 }
 
@@ -88,7 +95,7 @@ render() {
                   <ProductView image={this.state.item_view}/>
                   {/* put component here */}
                 </div>
-                <ProductImageList items={this.state.product}/>
+                <ProductImageList items={this.state.product} changeP={this.changeProduct}/>
                 <div className="display-media-links-container">
                  <span className="display-media-links-interactive-tour">Interactive Tour and documents ></span>
                 </div>

@@ -33,10 +33,10 @@ class ProductImageList extends React.Component {
        return (
           <ul className="display-thumbnail-list">
            {itemList.map((item, index) => (
-           <li key={index} className="display-image-thumbnail">
+           <li key={index} className="display-image-thumbnail" onClick={this.showModal}>
              <div  className={"display-thumbnail-container"}>
                <button className="display-image-button">
-                   <img className="display-individual-images" src={item}/>
+                   <img className="display-individual-images" src={item} onMouseEnter={this.props.changeP} id={item}/>
                </button>
              </div>
             </li>
@@ -55,14 +55,15 @@ class ProductImageList extends React.Component {
           <ProductModal show={this.state.show} close={this.hideModal}/>
           <ul className="display-thumbnail-list">
             {firstFour.map((item, index) => (
-            <li key={index} className="display-image-thumbnail" onClick={this.showModal}>
+            <li key={index} className="display-image-thumbnail" 
+            onClick={this.showModal}>
               <div  className={"display-thumbnail-container"}>
                 <button className="display-image-button">
-                    <img className="display-individual-images" src={item}/>
+                    <img className="display-individual-images" src={item} onMouseEnter={this.props.changeP} id={item}/>
                 </button>
               </div>
             </li>))}
-            <li key="5" className="display-image-thumbnail">
+            <li key="5" className="display-image-thumbnail" onClick={this.showModal}>
             <div  className={"display-thumbnail-container-lastOne"}>
               <button className="display-image-button">
                 <span className="display-text-wrapper">
@@ -78,8 +79,6 @@ class ProductImageList extends React.Component {
         </div>
       )
     }
-    
-    
    }
 
    
