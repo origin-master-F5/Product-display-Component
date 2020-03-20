@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Stars from './components/Stars.jsx';
 import ProductView from './components/ProductView.jsx';
 import ProductImageList from './components/ProductImageList.jsx';
+import Form from './components/Form.jsx';
 import Axios from 'axios';
 
 class App extends React.Component {
@@ -50,6 +51,12 @@ render() {
                 <li className="display-category">Nintendo Switch</li>
                 <li className="display-category">Nintendo Switch Games</li>
                 </ol>
+            </div>
+            <div className="display-nav-share">
+                 Share   
+            </div>
+            <div className="display-nav-print">
+                 Print
             </div>
         </div>
         <div className="display-container-row">
@@ -99,12 +106,13 @@ render() {
                 <div className="display-media-links-container">
                  <span className="display-media-links-interactive-tour">Interactive Tour and documents ></span>
                 </div>
+               
               </div>
 
            </div>
 
            <div className="display-container-col-2">
-
+           <Form price={this.state.product}/>
           </div>
         </div>
       </div>

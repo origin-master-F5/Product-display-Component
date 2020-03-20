@@ -29,10 +29,12 @@ render() {
             </div>
         </div>
         <div className="display-answered-questions">
+          <div className="display-chevron-star-icons">
             {this.state.expanded === true ? 
             <i className="up-icon ion-chevron-up"></i> :
             <i className="down-icon ion-chevron-down"></i>
             }  
+          </div>
             <span className="display-questions"> 27 Answered Questions</span>
         </div>
        </div>
