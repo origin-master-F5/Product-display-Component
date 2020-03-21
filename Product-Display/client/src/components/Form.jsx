@@ -1,4 +1,6 @@
 import React from 'react';
+import Geek from './Geek.jsx';
+import Geek_Plan from './Geek_Plan.jsx';
 
 class Form extends React.Component {
     constructor(props) {
@@ -175,17 +177,18 @@ class Form extends React.Component {
                </div>
                 <div className="display-format-platform-variation">
                     <div className="display-shop-product-column">
-                    <div className="display-variation-header">
-                        <span className="display-format-label" >
-                            <label className="display-software-platform"> Software Format: </label>
-                             {this.showSoftwareSelection()}
-                        </span>
+                        <div className="display-variation-header">
+                            <span className="display-format-label" >
+                                <label className="display-software-platform"> Software Format: </label>
+                                {this.showSoftwareSelection()}
+                            </span>
+                        </div>
                     </div>
-                    </div>
-                    
                 </div>
-            
+                <div className="display-format-platform-lowerDivider"></div>
 
+             <Geek />             
+             <Geek_Plan />
         </div>
       )
     }
