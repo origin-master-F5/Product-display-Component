@@ -473,6 +473,7 @@ strong {
   min-height: 1px;
   padding-left: 18px;
   padding-right: 18px;
+  width: 100%;
 }
 
 .display-column-price-row {
@@ -524,6 +525,7 @@ strong {
   border-bottom-width: 0;
   border-left-width: 0;
   border-top: 1px solid #c5cbd5;
+  width: 92%;
 }
 
 .display-shop-product-variation {
@@ -539,7 +541,6 @@ strong {
 
 .display-compatible-label {
   margin: 0;
-  
 }
 
 .display-software-platform {
@@ -552,21 +553,22 @@ strong {
   padding-bottom: 2px;
   font-size: 16px;
   font-weight: 700;
+  margin-left: 3px;
 }
 .display-variation-dropdown{
     padding: 0;
     min-height: 30px;
     margin: 0 3px;
     display: flex;
-    -webkit-box-align: stretch;
-    align-items: stretch;
+    box-align: stretch;
+    /* align-items: stretch; */
     position: relative;
-    -webkit-appearance: none;
     font-size: 15px;
     height: auto;
     color: #040c13;
-    border: 1px solid #c5cbd5;
-    border-radius: 4px;
+    border: 2px solid #c5cbd5;
+    border-radius: 3px;
+    width: 90%;
 }
 
 .display-rich-dropdown-trigger {
@@ -575,10 +577,10 @@ strong {
   text-align: left;
   /* padding: 0 200px 0 0; */
   position: relative;
-  background-color: transparent;
+  background-color: white;
   margin: 0;
   overflow: visible;
-  
+ 
 }
 
 .display-variation-dropdown-tile {
@@ -593,6 +595,22 @@ strong {
   /* padding-right: 50px; */
   -webkit-box-align: center;
 }
+
+.display-software-dropdown {
+    position: relative;
+    top: -70px;  
+    /* display:flex; */
+    align-items: center;
+    height: 25px;
+    
+    margin-top: 12px;
+    margin-right: 12px;
+    margin-bottom: 12px;
+    margin-left: 0px;
+    /* padding-right: 50px; */
+    width: 100%;
+  
+ }
 
 .display-variation-tile-image {
   max-width: 300px;
@@ -611,17 +629,44 @@ strong {
   border-color: #1d252c;
   border-width: 2px;
   position: relative;
+  
 }
 
 .display-dropdown-show:hover {
   cursor: default;
 }
 
+.display-dropdown-digital {
+    border-radius: 4px 4px 0 0;
+    border-color: #a7b0b8;
+    border-width: 2px;
+}
+
 .display-dropdown-wii {
   border-radius: 0 0 4px 4px;
   border-width: 1px 2px 1px 2px; 
+  z-index: 2;
 }
 
 .display-dropdown-wii:hover {
   border-color: #002db3;
+}
+
+.display-dropdown-digital:hover {
+  border-color: #002db3; 
+}
+
+.display-format-platform-variation {
+    padding-top: 4px;
+    margin-top: 55px;
+}
+
+.display-variation-software-option {
+    padding-left: 4px;
+}
+
+
+
+.display-dropdown-software-button {
+  
 }

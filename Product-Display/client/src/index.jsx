@@ -113,7 +113,9 @@ render() {
 
            <div className="display-container-col-2">
            <Form price={this.state.product}/>
+           
           </div>
+          
         </div>
       </div>
     </div>
