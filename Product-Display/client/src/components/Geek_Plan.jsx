@@ -5,7 +5,7 @@ class Geek_Plan extends React.Component {
       super(props);
       this.state = {
        changeWhite: false,
-       toggleYes: false
+       toggleYes: true
       }
     this.changeBoxColorWhite = this.changeBoxColorWhite.bind(this);
     this.changeBoxColorGrey = this.changeBoxColorGrey.bind(this);
@@ -40,19 +40,20 @@ class Geek_Plan extends React.Component {
          </div>
         )
      }
-
     }
 
     render() {
         return (
             <div>
               <div className="display-geekplan-container">
-                <div className="display-geekplan-box" onMouseOver={this.changeBoxColorWhite} onMouseLeave={this.changeBoxColorGrey} onClick=       {this.toggleBox}>
+                <div className="display-geekplan-box" onMouseOver={this.changeBoxColorWhite} onMouseLeave={this.changeBoxColorGrey} onClick={this.toggleBox}>
                      <div className="display-geekplan-image">
                       {this.toggleCheckbox()}
                         <img src={this.state.changeWhite ? "https://bb-clone.s3-us-west-1.amazonaws.com/general/geek_greybox.png" : "https://bb-clone.s3-us-west-1.amazonaws.com/general/geek_whitebox.png"} height="20" />  
                      </div>
-                    <div className="display-geekplan-text">2-Year Geek Squad Product Replacement</div></div>
+                  
+                       <div className="display-geekplan-text">2-Year Geek Squad Product Replacement</div></div>
+                  
                     <div className="display-geekplan-subcontainer">
                      <div className="display-geekplan-text-price">$7.99</div>
                      <div className="display-geekplan-text-price-monthly">About $0.33/mo.</div>

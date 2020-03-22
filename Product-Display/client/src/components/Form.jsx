@@ -1,6 +1,11 @@
 import React from 'react';
 import Geek from './Geek.jsx';
 import Geek_Plan from './Geek_Plan.jsx';
+import Pickup from './Pickup.jsx';
+import Cart from './Cart.jsx';
+import Bundle from './Bundle.jsx';
+import Compare from './Compare.jsx';
+import Cardmember from './Cardmember.jsx';
 
 class Form extends React.Component {
     constructor(props) {
@@ -146,7 +151,7 @@ class Form extends React.Component {
            <div className="display-pricing-container">
               <div className="display-price-match">
                   <div className="display-dollar-icon">
-                     <img className="display-dollar-image" src="https://bb-clone.s3-us-west-1.amazonaws.com/general/price_icon.png" height="14" width="15"></img>
+                     <img className="display-dollar-image" src="https://bb-clone.s3-us-west-1.amazonaws.com/general/price_icon.png" height="14" width="16"></img>
                      <span className="display-dollar-text">Price Match Guarantee
                         </span>
                   </div>
@@ -189,6 +194,11 @@ class Form extends React.Component {
 
              <Geek />             
              <Geek_Plan />
+            <Pickup />
+            <Cart />
+            <Bundle />
+            <Compare footer={this.props.footer}/>
+            <Cardmember />
         </div>
       )
     }

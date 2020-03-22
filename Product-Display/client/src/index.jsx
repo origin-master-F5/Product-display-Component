@@ -4,6 +4,7 @@ import Stars from './components/Stars.jsx';
 import ProductView from './components/ProductView.jsx';
 import ProductImageList from './components/ProductImageList.jsx';
 import Form from './components/Form.jsx';
+import CompareFooter from './components/CompareFooter.jsx';
 import Axios from 'axios';
 
 class App extends React.Component {
@@ -11,10 +12,14 @@ constructor(props) {
   super(props);
   this.state = {
    product: [],
-   item_view: ""
+   item_view: "",
+   showComparison: false,
+   item_title: ""
   };
   this.getProducts = this.getProducts.bind(this);
   this.changeProduct = this.changeProduct.bind(this);
+  this.renderFooter = this.renderFooter.bind(this);
+  this.changefooterstate = this.changefooterstate.bind(this);
 }
 
 //refactor to get items that match search criteria
@@ -24,8 +29,9 @@ getProducts(){
   .then(results => {
    this.setState({
      product: results.data,
-     item_view: results.data[0].images[0]
-   }, () => console.log('product', this.state.item_view))
+     item_view: results.data[0].images[0],
+     item_title: results.data[0].name
+   }, () => console.log('product', this.state.item_title))
   })
 }
 
@@ -34,6 +40,21 @@ changeProduct(e) {
     item_view: e.target.id
   })
 }
+
+changefooterstate(){
+ let footer = this.state.showComparison ? false : true;
+    this.setState({
+        showComparison: footer
+    })
+}
+
+renderFooter(){
+    if (this.state.showComparison) {
+        return (
+            <CompareFooter item={this.state.item_view} title={this.state.item_title} toggle={this.changefooterstate}/>
+        )
+    }
+  }
 
 componentDidMount(){
   this.getProducts()
@@ -112,12 +133,16 @@ render() {
            </div>
 
            <div className="display-container-col-2">
-           <Form price={this.state.product}/>
+           <Form price={this.state.product} footer={this.changefooterstate}/>
            
           </div>
           
+          
         </div>
       </div>
+        <div className="display-container-footer">
+             {this.renderFooter()}
+       </div>
     </div>
   )
 }

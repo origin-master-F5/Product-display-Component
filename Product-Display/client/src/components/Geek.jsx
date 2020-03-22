@@ -14,11 +14,11 @@ const Geek = (props) => {
                 </div>
                 <div className="display-geek-ratings-container">
                     <div className="display-geek-header-stars">
-                        <img src="https://bb-clone.s3-us-west-1.amazonaws.com/general/geek_stars.png" height="16"/>
-                        <img src="https://bb-clone.s3-us-west-1.amazonaws.com/general/geek_stars.png" height="16"/>
-                        <img src="https://bb-clone.s3-us-west-1.amazonaws.com/general/geek_stars.png" height="16"/>
-                        <img src="https://bb-clone.s3-us-west-1.amazonaws.com/general/geek_stars.png" height="16"/>
-                        <img src="https://bb-clone.s3-us-west-1.amazonaws.com/general/geek_stars.png" height="16"/>
+                        <img src="https://bb-clone.s3-us-west-1.amazonaws.com/general/geek_stars.png" height="17"/>
+                        <img src="https://bb-clone.s3-us-west-1.amazonaws.com/general/geek_stars.png" height="17"/>
+                        <img src="https://bb-clone.s3-us-west-1.amazonaws.com/general/geek_stars.png" height="17"/>
+                        <img src="https://bb-clone.s3-us-west-1.amazonaws.com/general/geek_stars.png" height="17"/>
+                        <img src="https://bb-clone.s3-us-west-1.amazonaws.com/general/geek_stars.png" height="17"/>
                     </div>
                     <div className="display-geek-header-review-count">(378)</div>
                 </div>
