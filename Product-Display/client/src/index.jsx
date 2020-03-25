@@ -5,6 +5,8 @@ import ProductView from './components/ProductView.jsx';
 import ProductImageList from './components/ProductImageList.jsx';
 import Form from './components/Form.jsx';
 import CompareFooter from './components/CompareFooter.jsx';
+import ProductHeader from './components/ProductHeader.jsx';
+import Header from './components/Header.jsx';
 import Axios from 'axios';
 
 class App extends React.Component {
@@ -14,7 +16,9 @@ constructor(props) {
    product: [],
    item_view: "",
    showComparison: false,
-   item_title: ""
+   item_title: "", 
+   header:[],
+   compare_img: ""
   };
   this.getProducts = this.getProducts.bind(this);
   this.changeProduct = this.changeProduct.bind(this);
@@ -30,8 +34,10 @@ getProducts(){
    this.setState({
      product: results.data,
      item_view: results.data[0].images[0],
-     item_title: results.data[0].name
-   }, () => console.log('product', this.state.item_title))
+     item_title: results.data[0].name,
+     header: results.data[0].header_titles,
+     compare_img: results.data[0].images[0]
+   }, () => console.log('product', results.data[0]))
   })
 }
 
@@ -51,7 +57,7 @@ changefooterstate(){
 renderFooter(){
     if (this.state.showComparison) {
         return (
-            <CompareFooter item={this.state.item_view} title={this.state.item_title} toggle={this.changefooterstate}/>
+            <CompareFooter item={this.state.compare_img} title={this.state.item_title} toggle={this.changefooterstate}/>
         )
     }
   }
@@ -65,14 +71,7 @@ render() {
     <div>
       <div className="display-container">
         <div className="display-nav-row">
-            <div className="display-nav">
-                <ol className="display-list">
-                <li className="display-category">Best Buy</li>
-                <li className="display-category">Video Games</li>
-                <li className="display-category">Nintendo Switch</li>
-                <li className="display-category">Nintendo Switch Games</li>
-                </ol>
-            </div>
+            <Header header={this.state.header}/>
             <div className="display-nav-share">
                  Share   
             </div>
@@ -82,40 +81,8 @@ render() {
         </div>
         <div className="display-container-row">
           <div className="display-container-col-1">
-              <div className='display-product-title'>
-                <div className="display-sku-title">
-                <span className="display-sku-h2">Mario Kart 8 Deluxe - Nintendo Switch</span>
-                </div>
-                <div className="display-data-layout">
-                    <div className="display-model-product-data" >
-                        <span className="display-product-data">
-                        <strong>Model:</strong>
-                        <span className="display-product-data"> HACPAABPA</span></span>
-                    </div>
-                    <div className="display-model-product-data" >
-                        <span className="display-product-data">
-                        <strong>Publisher:</strong>
-                        <span className="display-product-data"> Nintendo</span></span>
-                    </div>
-                    <div className="display-model-product-data" >
-                        <span className="display-product-data">
-                        <strong>SKU:</strong>
-                        <span className="display-product-data"> 5723304</span></span>
-                    </div>
-                    <div className="display-model-product-data" >
-                        <span className="display-product-data">
-                        <strong>Release Date:</strong>
-                        <span className="display-product-data"> 04/28/2017</span></span>
-                    </div>
-                    <div className="display-model-product-data" >
-                        <span className="display-product-data">
-                        <strong>ESRB Rating:</strong>
-                        <span className="display-product-data-everyone"> E (Everyone)</span>
-                        </span>
-                    </div>
-                </div>
-              </div>
-                <Stars />
+               <ProductHeader product={this.state.product}/>
+               <Stars />
               <div className="display-divider"></div>
              
               <div className="display-media-gallery">
@@ -126,18 +93,13 @@ render() {
                 <ProductImageList items={this.state.product} changeP={this.changeProduct}/>
                 <div className="display-media-links-container">
                  <span className="display-media-links-interactive-tour">Interactive Tour and documents ></span>
-                </div>
-               
+                </div>         
               </div>
-
            </div>
 
            <div className="display-container-col-2">
            <Form price={this.state.product} footer={this.changefooterstate}/>
-           
-          </div>
-          
-          
+          </div>   
         </div>
       </div>
         <div className="display-container-footer">

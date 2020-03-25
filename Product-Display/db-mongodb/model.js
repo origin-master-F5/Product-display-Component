@@ -19,7 +19,8 @@ const productSchema = new mongoose.Schema({
   geek_squad: String,
   description: String,
   features: String,
-  included: String
+  included: String,
+  header_titles: [String]
 
 
 });
