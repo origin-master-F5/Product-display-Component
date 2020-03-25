@@ -1,6 +1,7 @@
 import React from 'react';
 
 const VideoImageList = props => {
+    // does videos exist? 
     return (
       <div>
         <div className="display-videoimagelist-video-thumbnail-first">
