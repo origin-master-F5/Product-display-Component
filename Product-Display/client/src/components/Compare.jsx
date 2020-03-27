@@ -15,9 +15,7 @@ constructor(props) {
     this.handleToggle = this.handleToggle.bind(this);
     this.showModal = this.showModal.bind(this);
     this.changeRibbon = this.changeRibbon.bind(this);
-    
 }
-
 
 changeBoxColorWhite() {
     this.setState({
@@ -35,7 +33,7 @@ changeBoxColorWhite() {
     let answer = this.state.showComparison ? false : true;
     this.setState({
         showComparison: answer
-    }, () => this.props.footer())
+    })
   }
 
   showModal() {
@@ -47,8 +45,6 @@ changeBoxColorWhite() {
         )
     }
   }
-
-
 
   changeRibbon() {
       if (this.state.ribbonWhite) {
@@ -72,7 +68,11 @@ changeBoxColorWhite() {
                 <img className="display-compare-save-box" src={this.state.ribbonWhite ? "https://bb-clone.s3-us-west-1.amazonaws.com/general/compare_save_whiteribbon.png" : "https://bb-clone.s3-us-west-1.amazonaws.com/general/compare_save_blueribbon.png"} height="18" onClick={this.changeRibbon}/>
                 <span className="display-compare-save-text" >Saved</span>
           </div>
-           
+           <div>
+             <div className={this.state.showComparison ? "display-compare-footer" : "display-compare-footer-none"}>
+               <CompareFooter image={this.props.image} title={this.props.title} toggle={this.handleToggle}/>
+            </div>
+           </div>
         </div>
     )
  }

@@ -18,6 +18,7 @@ import Videos from './Videos.jsx';
       this.changeProduct = this.changeProduct.bind(this);
       this.selectOtherTab = this.selectOtherTab.bind(this);
       this.renderTabs = this.renderTabs.bind(this);
+      this.selectVideoTab = this.selectVideoTab.bind(this);
     }
 
     handleClickOutsideModal(e) {
@@ -44,8 +45,17 @@ import Videos from './Videos.jsx';
       changeProduct(i) {
        this.setState({
            product_viewer: this.props.product[0].images[i],
-           imgIndex: i
+           imgIndex: i,
+           image_selected: true,
+           video_selected: false,
        })
+      }
+
+      selectVideoTab(){
+        this.setState({
+            image_selected: false,
+            video_selected: true
+          })
       }
 
       selectOtherTab() {
@@ -119,10 +129,12 @@ import Videos from './Videos.jsx';
                 </div>
                 <div className="display-productmodal-tab-content-wrapper">
                     {this.renderTabs()}
-                    
                 </div>
              </div>
            </div>
+           <button className="display-productmodal-c-close-icon" onClick={() => this.props.close()}>
+              <img src="https://bb-clone.s3-us-west-1.amazonaws.com/general/close_icon.png" height="15"></img>
+           </button>
         </div>
       </div>
     </div>

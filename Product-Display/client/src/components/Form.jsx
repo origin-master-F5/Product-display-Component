@@ -197,7 +197,7 @@ class Form extends React.Component {
             <Pickup />
             <Cart />
             <Bundle />
-            <Compare footer={this.props.footer}/>
+            <Compare image={this.props.image} title={this.props.title}/>
             <Cardmember />
         </div>
       )

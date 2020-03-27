@@ -7,23 +7,27 @@ import Form from './components/Form.jsx';
 import CompareFooter from './components/CompareFooter.jsx';
 import ProductHeader from './components/ProductHeader.jsx';
 import Header from './components/Header.jsx';
+import CompletePurchase from './components/CompletePurchase.jsx';
 import Axios from 'axios';
 
 class App extends React.Component {
 constructor(props) {
   super(props);
+  this.showProductModal = React.createRef();
   this.state = {
    product: [],
    item_view: "",
    showComparison: false,
    item_title: "", 
    header:[],
-   compare_img: ""
+   compare_img: "", 
+   price: ""
   };
   this.getProducts = this.getProducts.bind(this);
   this.changeProduct = this.changeProduct.bind(this);
-  this.renderFooter = this.renderFooter.bind(this);
-  this.changefooterstate = this.changefooterstate.bind(this);
+//   this.renderFooter = this.renderFooter.bind(this);
+//   this.changefooterstate = this.changefooterstate.bind(this);
+  this.handleClickShowModal = this.handleClickShowModal.bind(this);
 }
 
 //refactor to get items that match search criteria
@@ -36,8 +40,9 @@ getProducts(){
      item_view: results.data[0].images[0],
      item_title: results.data[0].name,
      header: results.data[0].header_titles,
-     compare_img: results.data[0].images[0]
-   }, () => console.log('product', results.data[0]))
+     compare_img: results.data[0].images[0],
+     price: results.data[0].price
+   }, () => console.log('product', this.state.price))
   })
 }
 
@@ -47,19 +52,9 @@ changeProduct(e) {
   })
 }
 
-changefooterstate(){
- let footer = this.state.showComparison ? false : true;
-    this.setState({
-        showComparison: footer
-    })
-}
-
-renderFooter(){
-    if (this.state.showComparison) {
-        return (
-            <CompareFooter item={this.state.compare_img} title={this.state.item_title} toggle={this.changefooterstate}/>
-        )
-    }
+  handleClickShowModal(){
+      let i = this.showProductModal.current.state.hovered_index;
+      this.showProductModal.current.showModal(i);
   }
 
 componentDidMount(){
@@ -70,6 +65,7 @@ render() {
   return (
     <div>
       <div className="display-container">
+        <div className="display-right-sidebar-container">test</div>
         <div className="display-nav-row">
             <Header header={this.state.header}/>
             <div className="display-nav-share">
@@ -79,7 +75,6 @@ render() {
                  Print
             </div>
         </div>
-        <div className="display-container-row">
           <div className="display-container-col-1">
                <ProductHeader product={this.state.product}/>
                <Stars />
@@ -87,10 +82,10 @@ render() {
              
               <div className="display-media-gallery">
                 <div className="display-product-primary-container">
-                  <ProductView image={this.state.item_view}/>
+                  <ProductView image={this.state.item_view} click={this.handleClickShowModal}/>
                   {/* put component here */}
                 </div>
-                <ProductImageList items={this.state.product} changeP={this.changeProduct}/>
+                <ProductImageList items={this.state.product} changeP={this.changeProduct} ref={this.showProductModal}/>
                 <div className="display-media-links-container">
                  <span className="display-media-links-interactive-tour">Interactive Tour and documents ></span>
                 </div>         
@@ -98,17 +93,18 @@ render() {
            </div>
 
            <div className="display-container-col-2">
-           <Form price={this.state.product} footer={this.changefooterstate}/>
-          </div>   
-        </div>
+           <Form price={this.state.product} image={this.state.item_view} title={this.state.item_title}/>
+          </div> 
+         
+        < CompletePurchase product={this.state.compare_img} price={this.state.price}/>
+        test
       </div>
-        <div className="display-container-footer">
-             {this.renderFooter()}
-       </div>
+        
+       
     </div>
   )
 }
 
 }
 
-ReactDOM.render(<App />, document.getElementById('bestbuy'));
+ReactDOM.render(<App />, document.getElementById('product'));

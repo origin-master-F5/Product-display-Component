@@ -12,17 +12,21 @@ class ProductImageList extends React.Component {
      show: false,
      tab_selected: true,
      video_selected: false,
-     selected_index: 0
+     selected_index: 0,
+     hovered_index: 0
     };
   this.renderList = this.renderList.bind(this);
   this.showModal = this.showModal.bind(this);
   this.hideModal = this.hideModal.bind(this);
- 
+  this.onHover = this.onHover.bind(this);
+  this.showVideoModal = this.showVideoModal.bind(this);
   }
 
   showModal(i){
     this.setState({
       show: true,
+      tab_selected: true,
+      video_selected: false,
       selected_index: i
     }, this.viewProductInModal.current.changeProduct(i))
   }
@@ -33,6 +37,22 @@ class ProductImageList extends React.Component {
     })
   }
 
+  onHover(i){
+    this.setState({
+      hovered_index: i
+    })
+  }
+
+  showVideoModal(){
+    this.viewProductInModal.current.selectVideoTab();
+    this.setState({
+      show: true,
+      tab_selected: false,
+      video_selected: true
+    })
+
+  }
+
   renderList() {
    if (this.props.items.length > 0 ) {
      if (this.props.items[0].images.length < 5) {
@@ -40,9 +60,9 @@ class ProductImageList extends React.Component {
        return (
           <ul className="display-thumbnail-list">
            {itemList.map((item, index) => (
-           <li key={index} className="display-image-thumbnail" onClick={()=>this.showModal(index)}>
+           <li key={index} className="display-image-thumbnail" onClick={()=>this.showModal(index)} >
              <div  className={"display-thumbnail-container"}>
-               <button className="display-image-button">
+               <button className="display-image-button" onMouseEnter={() => this.onHover(index)}>
                    <img className="display-individual-images" src={item} onMouseEnter={this.props.changeP} id={item}/>
                </button>
              </div>
@@ -74,7 +94,7 @@ class ProductImageList extends React.Component {
             <li key={index} className="display-image-thumbnail" 
             onClick={()=>this.showModal(index)}>
               <div  className={"display-thumbnail-container"}>
-                <button className="display-image-button">
+                <button className="display-image-button" onMouseEnter={() => this.onHover(index)}>
                     <img className="display-individual-images" src={item} onMouseEnter={this.props.changeP} id={item}/>
                 </button>
               </div>
@@ -91,7 +111,7 @@ class ProductImageList extends React.Component {
               </button>
             </div>
             </li>
-            <VideoImageList />
+            <VideoImageList click={this.showVideoModal}/>
           </ul> 
         </div>
       )
