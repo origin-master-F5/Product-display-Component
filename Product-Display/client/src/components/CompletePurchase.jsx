@@ -11,31 +11,33 @@ const CompletePurchase = props => {
               </h2>
               <div className="display-completepurchase-v-divide-top"></div>
               <div>
-                <div className="display-completepurchase-cyp-content">
-                  <div className="display-completepurchase-cyp-driver-wrapper">
-                    <div className="display-completepurchase-cyp-driver">
-                      <p className="display-completepurchase-currently-viewing">Item you're currently viewing</p>
-                      <div className="display-completepurchase-cyp-item-driver">
-                      <div className="display-completepurchase-image-wrapper">
-                          <img className="display-completepurchase-image" src={props.product} ></img>
+                <button className="display-completepurchase-button-container">
+                    <div className="display-completepurchase-cyp-content">
+                      <div className="display-completepurchase-cyp-driver-wrapper">
+                        <div className="display-completepurchase-cyp-driver">
+                          <p className="display-completepurchase-currently-viewing">Item you're currently viewing</p>
+                          <div className="display-completepurchase-cyp-item-driver">
+                             <div className="display-completepurchase-image-wrapper">
+                               <img className="display-completepurchase-image" src={props.product} ></img>
+                             </div> 
+                          </div>
+                          <div className="display-completepurchase-item-detail-block">
+                            <div className="display-completepurchase-item-price">
+                            <span className="display-price-match-dollar">$</span>
+                            <span className="display-price-match-amount">{props.price}</span>
+                            </div>
+                            <div className="display-completepurchase-disclaimer">Offer disclaimer</div>
+                          </div>
+                        
                       </div>
-                      <div className="display-completepurchase-item-detail-block">
-                        <div className="display-completepurchase-item-price">
-                        <span className="display-price-match-dollar">$</span>
-                        <span className="display-price-match-amount">{props.price}</span>
-                        </div>
-                        <div className="display-completepurchase-disclaimer">Offer disclaimer</div>
+                    
                       </div>
-                      
+                      <div className="display-completepurchase-cyp-items" >
+                          <img className="display-completepurchase-cyp-placeholder" src="https://bb-clone.s3-us-west-1.amazonaws.com/general/cyp.placeholder_mariokart.png" />
                       </div>
-                     
-                  </div>
-                 
-                  </div>
-                  <div className="display-completepurchase-cyp-items" >
-                      <img src="https://bb-clone.s3-us-west-1.amazonaws.com/general/cyp-items.png" height="465"/>
-                  </div>
-                </div>
+                    </div>
+                </button>
+
                 <div className="display-completepurchase-cyp-total">
                 <div className="display-completepurchase-cyp-subtotal">
                     <span className="display-subtotal-label">Subtotal: </span>

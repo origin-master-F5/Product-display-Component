@@ -8,7 +8,9 @@ import CompareFooter from './components/CompareFooter.jsx';
 import ProductHeader from './components/ProductHeader.jsx';
 import Header from './components/Header.jsx';
 import CompletePurchase from './components/CompletePurchase.jsx';
+import Bought from './components/Bought.jsx';
 import Axios from 'axios';
+import Accordion from './components/Accordion.jsx';
 
 class App extends React.Component {
 constructor(props) {
@@ -97,7 +99,8 @@ render() {
           </div> 
          
         < CompletePurchase product={this.state.compare_img} price={this.state.price}/>
-        test
+        <Bought />
+        <Accordion />
       </div>
         
        
