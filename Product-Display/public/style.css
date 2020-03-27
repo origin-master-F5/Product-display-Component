@@ -16,7 +16,7 @@
 .display-container {
   margin-left: 40px;
   display: grid;
-  grid-template-columns: 45% 30% 25%;
+  grid-template-columns: 50% 25% 25%;
   grid-template-rows: auto;
   grid-template-areas:
    "nav nav sidebar"
@@ -257,13 +257,15 @@ li {
   /* position: relative; */
   position: absolute;
   border: 0;
-  left: 0;
+  /* left: 0; */
   padding: 0;
   width: 100%;
   margin: 0;
   text-transform: none;
   box-sizing: border-box;
   cursor: pointer;
+  justify-content: center;
+  vertical-align: middle;
 }
 
 .display-main-img-product-view:active {
@@ -291,8 +293,8 @@ li {
   list-style: none;
   box-sizing: border-box;
   left: 0px;
-  margin-right: 20px;
-  padding-right: 90px;
+  /* margin-right: 20px; */
+  /* padding-right: 90px; */
 }
 
 
@@ -2439,7 +2441,7 @@ strong {
 .display-accordion-trigger-label {
     padding: 0;
     line-height: normal;
-    font-size: 30px;
+    font-size: 28px;
     font-weight: 700;
     margin-top: 25px;
     margin-bottom: 25px;
@@ -2602,5 +2604,19 @@ strong {
     width: 100%;
 }
 .display-completepurchase-cyp-placeholder {
+    width: 100%;
+}
+.display-sidebar-container {
+    margin-top: 4px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    border-left: 1px solid #c5cbd5;
+}
+.display-sidebar-button {
+    width: 100%;
+    border: none;
+}
+.display-sidebar-placeholder-img {
     width: 100%;
 }

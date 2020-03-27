@@ -11,6 +11,7 @@ import CompletePurchase from './components/CompletePurchase.jsx';
 import Bought from './components/Bought.jsx';
 import Axios from 'axios';
 import Accordion from './components/Accordion.jsx';
+import Sidebar from './components/Sidebar.jsx';
 
 class App extends React.Component {
 constructor(props) {
@@ -67,7 +68,9 @@ render() {
   return (
     <div>
       <div className="display-container">
-        <div className="display-right-sidebar-container">test</div>
+        <div className="display-right-sidebar-container">
+          <Sidebar />
+        </div>
         <div className="display-nav-row">
             <Header header={this.state.header}/>
             <div className="display-nav-share">
