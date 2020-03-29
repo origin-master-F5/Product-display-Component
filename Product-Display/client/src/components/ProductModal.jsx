@@ -102,9 +102,9 @@ import Videos from './Videos.jsx';
                  <div className="display-productmodal-primary-media-wrapper">
                    <div className="display-productmodal-item-image-wrapper">
                    <div className="display-productmodal-primary-image-container">
-                      <button className="display-productmodal-primary-button">
+                      <button className="display-productmodal-primary-button" onClick={this.toggleZoom}>
                        <img className={this.state.zoom_selected ? "display-productmodal-primary-image-zoomed" : "display-productmodal-primary-image-zoomable"} src={this.state.product_viewer} onClick={this.toggleZoom}></img>
-                      <span className="display-productmodal-carousel-message" onClick={this.toggleZoom}>Click or tap to zoom</span>
+                      <span className="display-productmodal-carousel-message" >Click or tap to zoom</span>
                       </button>
                    </div>
                 </div>

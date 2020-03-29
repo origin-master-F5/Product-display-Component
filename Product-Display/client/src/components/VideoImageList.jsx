@@ -12,8 +12,8 @@ const VideoImageList = props => {
            </div>
            
            <div className="display-videoimagelist-video-more-thumbnail">
+           {numofVideos > 1 ? 
               <div className="display-videoimagelist-thumbnail-container">
-              {numofVideos > 1 && 
                   <div  className="display-videoimagelist-thumbnail-container-lastOne">
                     <button className="display-image-button">
                         <span className="display-text-wrapper">
@@ -22,13 +22,13 @@ const VideoImageList = props => {
                         </span>
                         <span className="display-image-overlay"></span>
                     </button>
-              </div> }
-              </div>
-
+              </div></div> : 
+                    <div></div>}
             </div>
           </div>
     </div>
-    )
+    ) 
+
 }
 
 export default VideoImageList;

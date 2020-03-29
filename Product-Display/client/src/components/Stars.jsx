@@ -7,12 +7,13 @@ constructor(props) {
   this.openHistogram = React.createRef();
   this.state = {
    expanded: false,
-   show: false
+   show: false,
   };
 
 this.handleClickOutside = this.handleClickOutside.bind(this);
 this.showModal = this.showModal.bind(this);
 this.hideModal = this.hideModal.bind(this);
+this.calculateRating = this.calculateRating.bind(this);
 }
 
 hideModal() {
@@ -27,6 +28,58 @@ showModal() {
     expanded: true,
     show: true
   })
+}
+
+calculateRating() {
+  var reviews = this.props.reviews_breakdown;
+  var weightedNumerator = 0;
+  var weightedDenominator = 0;
+  var count = 5;
+  console.log('rev', reviews);
+  for(let i = 0; i < reviews.length; i++) {
+   weightedNumerator += (reviews.length - i) * reviews[i];
+   weightedDenominator += reviews[i];
+  }
+  var rating = (weightedNumerator/weightedDenominator).toFixed(1);
+  if (rating < 4.8) {
+    var wholeStars = Math.trunc(rating);
+    count -= wholeStars;
+    var isQuarterStar = (rating - wholeStars) < .3 ? true : false;
+    var isHalfStar = (rating - wholeStars) >= .5 ? true : false;
+    var placeholder = [];
+    for(let i = 0; i < wholeStars; i++) {
+      placeholder.push(wholeStars);
+    }
+    return (
+      <div className="display-ratings-reviews">
+        {placeholder.map((n, i) => (
+         <img src="https://bb-clone.s3-us-west-1.amazonaws.com/general/geek_stars.png" height="19"/>
+        ))} 
+        {isQuarterStar ? <img src="https://bb-clone.s3-us-west-1.amazonaws.com/general/review_quarter_star.png" height="17"/> : <img src="https://bb-clone.s3-us-west-1.amazonaws.com/general/review_half_star.png" height="17"/>}
+        {wholeStars < 3 && <img src="https://bb-clone.s3-us-west-1.amazonaws.com/general/review_empty_star.png" height="17"/>}
+        {wholeStars < 3 && <img src="https://bb-clone.s3-us-west-1.amazonaws.com/general/review_empty_star.png" height="17"/>}
+        {wholeStars === 3 && <img src="https://bb-clone.s3-us-west-1.amazonaws.com/general/review_empty_star.png" height="17"/>}
+        <div className="display-c-reviews">
+        <span className="display-star-rate">{rating}</span>
+                <span className="display-star-review">({this.props.reviews_count} Reviews) </span>
+            </div>
+      </div>
+    )
+  } else {
+    return (
+      <div className="display-ratings-reviews">
+        <img src="https://bb-clone.s3-us-west-1.amazonaws.com/general/geek_stars.png" height="19"/>
+            <img src="https://bb-clone.s3-us-west-1.amazonaws.com/general/geek_stars.png" height="19"/>
+            <img src="https://bb-clone.s3-us-west-1.amazonaws.com/general/geek_stars.png" height="19"/>
+            <img src="https://bb-clone.s3-us-west-1.amazonaws.com/general/geek_stars.png" height="19"/>
+            <img src="https://bb-clone.s3-us-west-1.amazonaws.com/general/geek_stars.png" height="19"/>
+            <div className="display-c-reviews">
+               <span className="display-star-rate">{rating}</span>
+                <span className="display-star-review">({this.props.reviews_count} Reviews) </span>
+            </div>
+      </div>
+    )
+  }
 }
 
 componentDidMount() {
@@ -51,8 +104,8 @@ render() {
   return (
     <div>
        <div className="display-stars">
-        <div className="display-ratings-reviews">
-            <img src="https://bb-clone.s3-us-west-1.amazonaws.com/general/geek_stars.png" height="19"/>
+        <div className="display-ratings-reviews" onClick={this.calculateRating}>
+            {/* <img src="https://bb-clone.s3-us-west-1.amazonaws.com/general/geek_stars.png" height="19"/>
             <img src="https://bb-clone.s3-us-west-1.amazonaws.com/general/geek_stars.png" height="19"/>
             <img src="https://bb-clone.s3-us-west-1.amazonaws.com/general/geek_stars.png" height="19"/>
             <img src="https://bb-clone.s3-us-west-1.amazonaws.com/general/geek_stars.png" height="19"/>
@@ -60,7 +113,8 @@ render() {
             <div className="display-c-reviews">
                 <span className="display-star-rate">4.9</span>
                 <span className="display-star-review">({this.props.reviews_count} Reviews) </span>
-            </div>
+            </div> */}
+            {this.calculateRating()}
        
         <span className="display-answered-questions">
           <div className="display-chevron-star-icons">
