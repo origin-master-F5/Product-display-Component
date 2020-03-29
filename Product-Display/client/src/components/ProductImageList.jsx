@@ -8,7 +8,6 @@ class ProductImageList extends React.Component {
     super(props);
     this.viewProductInModal = React.createRef();
     this.state = {
-     productList: [],
      show: false,
      tab_selected: true,
      video_selected: false,
@@ -49,14 +48,13 @@ class ProductImageList extends React.Component {
       show: true,
       tab_selected: false,
       video_selected: true
-    })
-
+    }, ()=> this.viewProductInModal.current.updateViewer())
   }
 
   renderList() {
-   if (this.props.items.length > 0 ) {
-     if (this.props.items[0].images.length < 5) {
-       const itemList = this.props.items[0].images;
+   if (this.props.entire_product.length > 0 ) {
+     if (this.props.entire_product[0].images.length < 5) {
+       const itemList = this.props.entire_product[0].images;
        return (
           <ul className="display-thumbnail-list">
            {itemList.map((item, index) => (
@@ -72,7 +70,7 @@ class ProductImageList extends React.Component {
        )
      }
      else {
-      const itemList = this.props.items[0].images;
+      const itemList = this.props.entire_product[0].images;
       const firstFour = itemList.slice(0, 4);
       const fifth = itemList.slice(4, 5);
       const length = itemList.length - 4;
@@ -84,9 +82,12 @@ class ProductImageList extends React.Component {
           close={this.hideModal} 
           selected={this.state.tab_selected}
           video={this.state.video_selected}
-          product={this.props.items}
+          entire_product={this.props.entire_product}
           imgIndex={this.state.selected_index}
           ref={this.viewProductInModal}
+          still_img_videos={this.props.still_img_videos}
+          miniplayer_videos={this.props.miniplayer_videos}
+          video_length={this.props.video_length}
           />
           
           <ul className="display-thumbnail-list">
@@ -111,7 +112,7 @@ class ProductImageList extends React.Component {
               </button>
             </div>
             </li>
-            <VideoImageList click={this.showVideoModal}/>
+            <VideoImageList click={this.showVideoModal} still_img_videos={this.props.still_img_videos}/>
           </ul> 
         </div>
       )

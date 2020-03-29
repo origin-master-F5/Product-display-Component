@@ -1,6 +1,9 @@
 import React from 'react';
+import moment from 'moment';
 
 const Pickup = (props) => {
+    var month = moment().add( 2, 'days').format('ddd, MMM D');
+    
     return (
         <div>
            <div className="display-pickup-topdivider">
@@ -16,7 +19,7 @@ const Pickup = (props) => {
                    </span>
                </div>
                <div className="display-pickup-text-important">
-                   Shipping: <span className="display-pickup-text-important-paragraph" >FREE Shipping by Wed, Mar 25 or see more options in checkout to <span className="display-pickup-stores">90001</span></span>
+                   Shipping: <span className="display-pickup-text-important-paragraph" >FREE Shipping by {month} or see more options in checkout to <span className="display-pickup-stores">90001</span></span>
               </div>
            </div>
         </div>

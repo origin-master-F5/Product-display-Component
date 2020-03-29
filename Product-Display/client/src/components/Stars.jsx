@@ -59,7 +59,7 @@ render() {
             <img src="https://bb-clone.s3-us-west-1.amazonaws.com/general/geek_stars.png" height="19"/>
             <div className="display-c-reviews">
                 <span className="display-star-rate">4.9</span>
-                <span className="display-star-review">(20,317 Reviews) </span>
+                <span className="display-star-review">({this.props.reviews_count} Reviews) </span>
             </div>
        
         <span className="display-answered-questions">
@@ -69,14 +69,14 @@ render() {
             <i className="display-stars-down-icon ion-chevron-down" onClick={this.showModal}></i>
             }  
           </div>
-            <span className="display-questions"> 27 Answered Questions</span>
+            <span className="display-questions"> {this.props.questions} Answered Questions</span>
         </span>
 
       </div>
     </div>
        <div className="display-histogram-divider"></div>
        <div className="display-histogram-window" ref={this.openHistogram}>
-          {this.state.show && <Histogram />}
+          {this.state.show && <Histogram reviews_breakdown={this.props.reviews_breakdown} reviews_count={this.props.reviews_count} expandReviews={this.props.expandReviews}/>}
        </div>
     </div>
   )

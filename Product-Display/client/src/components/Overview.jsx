@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Overview = props => {
+    
 
     return (
      <div>   
@@ -9,7 +10,7 @@ const Overview = props => {
            <div className="display-overview-shop-product-description">
              <section className="display-overview-align-heading-left">
                  <span className="display-overview-description-heading">Description</span>
-                 <div className="display-overview-description-body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima labore fugiat aliquam assumenda omnis cupiditate perspiciatis ea animi laboriosam odit? Explicabo distinctio at quae fugiat unde a labore ab rem?</div>
+                 <div className="display-overview-description-body">{props.description}</div>
              </section>
            </div>
          </div>
@@ -19,7 +20,7 @@ const Overview = props => {
         <div className="display-overview-shop-product-description-features">
             <section className="display-overview-align-heading-left">
                 <span className="display-overview-description-heading">Features</span>
-                <div className="display-overview-description-body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima labore fugiat aliquam assumenda omnis cupiditate perspiciatis ea animi laboriosam odit? Explicabo distinctio at quae fugiat unde a labore ab rem?</div>
+                <div className="display-overview-description-body">{props.features}</div>
             </section>
         </div>
         <div className="display-overview-divider"></div>
@@ -27,7 +28,7 @@ const Overview = props => {
         <div className="display-overview-shop-product-description-features">
             <section className="display-overview-align-heading-left">
                 <span className="display-overview-description-heading">What's Included</span>
-                <span className="display-overview-description-bold" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima labore fugiat aliquam assumenda omnis cupiditate perspiciatis ea animi laboriosam odit? Explicabo distinctio at quae fugiat unde a labore ab rem?</span>
+                <span className="display-overview-description-bold" >{props.included}</span>
             </section>
         </div>
 

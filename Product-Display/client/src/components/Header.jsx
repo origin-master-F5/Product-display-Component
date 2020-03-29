@@ -5,7 +5,7 @@ const Header = (props) => {
         <div>
           <div className="display-nav">
                 <ol className="display-list"> {
-                  props.header.map((item, index) => (
+                  props.nav_categories.map((item, index) => (
                   <li className="display-category" key={index}>{item}</li>
                   ))
                 }

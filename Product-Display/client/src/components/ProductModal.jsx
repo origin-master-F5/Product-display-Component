@@ -6,8 +6,8 @@ import Videos from './Videos.jsx';
       super(props);
       this.modal_window = React.createRef();
       this.state = {
-       products : this.props.product,
-       product_viewer: this.props.product[0].images[0],
+       entire_products : this.props.entire_product,
+       product_viewer: this.props.entire_product[0].images[0],
        zoom_selected: false,
        imgIndex: this.props.imgIndex,
        image_selected: true,
@@ -19,6 +19,7 @@ import Videos from './Videos.jsx';
       this.selectOtherTab = this.selectOtherTab.bind(this);
       this.renderTabs = this.renderTabs.bind(this);
       this.selectVideoTab = this.selectVideoTab.bind(this);
+      this.updateViewer = this.updateViewer.bind(this);
     }
 
     handleClickOutsideModal(e) {
@@ -44,12 +45,18 @@ import Videos from './Videos.jsx';
 
       changeProduct(i) {
        this.setState({
-           product_viewer: this.props.product[0].images[i],
+           product_viewer: this.props.entire_product[0].images[i],
            imgIndex: i,
            image_selected: true,
            video_selected: false,
        })
       }
+
+      updateViewer() {
+        this.setState({
+          product_viewer: this.props.entire_product[0].images[0]
+      })
+     }
 
       selectVideoTab(){
         this.setState({
@@ -76,7 +83,7 @@ import Videos from './Videos.jsx';
                         <div className="display-productmodal-scroll-area">
                         <div className="display-productmodal-content">
                             <ol className="display-productmodal-carousel-indicate">
-                              {this.props.product[0].images.map((image, index) => (
+                              {this.props.entire_product[0].images.map((image, index) => (
                                 <li className="display-productmodal-thumbnail-content" key={index} onClick={() => this.changeProduct(index)}>
                                    <div className={this.state.imgIndex === index ? "display-productmodal-thumbnail-container-selected" : "display-productmodal-thumbnail-container"} index={index}>
                                      <div className="display-productmodal-image-button">
@@ -108,7 +115,7 @@ import Videos from './Videos.jsx';
           }
 
           return (
-              <Videos />
+              <Videos still_img_videos={this.props.still_img_videos} miniplayer_videos={this.props.miniplayer_videos} trailer_title={this.props.entire_product[0].name} video_length={this.props.video_length}/>
           )
       }
       

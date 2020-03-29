@@ -1,7 +1,11 @@
 import React from 'react';
 
 const CompletePurchase = props => {
-    var sum = Number(props.price) + Number(149.97);
+   if (props.bundle_total.length > 0) {
+     var sumofArray = (acc, curr) => acc + curr;
+     var reduced = props.bundle_total.reduce((sumofArray))
+     var sum = Number(props.price) + reduced;
+   }
     return (
         <div className="display-container-row-3">
           <div className="display-shop-complete-your-purchase-bottom">
@@ -18,7 +22,7 @@ const CompletePurchase = props => {
                           <p className="display-completepurchase-currently-viewing">Item you're currently viewing</p>
                           <div className="display-completepurchase-cyp-item-driver">
                              <div className="display-completepurchase-image-wrapper">
-                               <img className="display-completepurchase-image" src={props.product} ></img>
+                               <img className="display-completepurchase-image" src={props.static_img} ></img>
                              </div> 
                           </div>
                           <div className="display-completepurchase-item-detail-block">
@@ -33,7 +37,7 @@ const CompletePurchase = props => {
                     
                       </div>
                       <div className="display-completepurchase-cyp-items" >
-                          <img className="display-completepurchase-cyp-placeholder" src="https://bb-clone.s3-us-west-1.amazonaws.com/general/cyp.placeholder_mariokart.png" />
+                          <img className="display-completepurchase-cyp-placeholder" src={props.bundle_img} />
                       </div>
                     </div>
                 </button>

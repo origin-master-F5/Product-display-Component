@@ -158,7 +158,7 @@ class Form extends React.Component {
               </div>
               <div className="display-price-match-wrapper">
                 <div className="display-price-match-amount" ><span className="display-price-match-dollar">$</span>
-                    {this.props.price.length > 0 ? this.props.price[0].price : '' }  
+                    {this.props.entire_product.length > 0 ? this.props.entire_product[0].price : '' }  
                </div>
               </div>
               
@@ -193,11 +193,11 @@ class Form extends React.Component {
                 <div className="display-format-platform-lowerDivider"></div>
 
              <Geek />             
-             <Geek_Plan />
+             <Geek_Plan geek_squad_price={this.props.geek_squad_price}/>
             <Pickup />
             <Cart />
             <Bundle />
-            <Compare image={this.props.image} title={this.props.title}/>
+            <Compare image={this.props.image} item_name={this.props.item_name}/>
             <Cardmember />
         </div>
       )

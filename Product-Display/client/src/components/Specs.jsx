@@ -1,7 +1,12 @@
 import React from 'react';
 
 const Specs = props => {
-    var headers = ["ESRB Rating", "ESRB Descriptors", "Compatible Platform(s)", "Software Format"];
+var headers = [ "a", "b", "c", "d"]
+    if (props.keyspecs_title.length > 0) {
+      var keyspec_titles = props.keyspecs_title.slice();
+      var keyspec_details = props.keyspecs.slice();
+  }
+
     return (
      <div className="display-specs-content">   
       <div className="display-specs-categories">
@@ -10,16 +15,18 @@ const Specs = props => {
             <span className="display-specs-section-title">Key Specs</span>
           </div>
           <div className="display-specs-table">
+
             <ul className="display-specs-ul">
-              {headers.map((title, index) => (
+              {keyspec_titles && keyspec_titles.map((title, index) => (
                 <li className="display-specs-li" key={index}>
                   <div className="display-specs-title-container">
                     <span>{title}</span> 
                   </div>
-                  <div className="display-specs-row-value">E (Everyone)</div>              
+                  <div className="display-specs-row-value">{keyspec_details[index]}</div>              
                 </li>
               ))}
             </ul>
+
           </div>
         </div>
         <div className="display-specs-line-break-wrapper"><hr className="display-specs-presentation"/></div>
@@ -30,12 +37,12 @@ const Specs = props => {
           </div>
           <div className="display-specs-table">
             <ul className="display-specs-ul">
-              {headers.map((title, index) => (
+              {props.general_title.length > 0 && props.general_title.map((title, index) => (
                 <li className="display-specs-li" key={index}>
                   <div className="display-specs-title-container">
                     <span>{title}</span> 
                   </div>
-                  <div className="display-specs-row-value">E (Everyone)</div>              
+                  <div className="display-specs-row-value">{props.general[index]}</div>              
                 </li>
               ))}
             </ul>
@@ -49,12 +56,12 @@ const Specs = props => {
           </div>
           <div className="display-specs-table">
             <ul className="display-specs-ul">
-              {headers.map((title, index) => (
+              {props.game_titles.length > 0 && props.game_titles.map((title, index) => (
                 <li className="display-specs-li" key={index}>
                   <div className="display-specs-title-container">
                     <span>{title}</span> 
                   </div>
-                  <div className="display-specs-row-value">E (Everyone)</div>              
+                  <div className="display-specs-row-value">{props.game_details[index]}</div>              
                 </li>
               ))}
             </ul>
@@ -62,60 +69,6 @@ const Specs = props => {
         </div>
         <div className="display-specs-line-break-wrapper"><hr className="display-specs-presentation"/></div>
 
-        <div className="display-specs-cateogry-wrapper">
-          <div className="display-specs-section-title-container">
-            <span className="display-specs-section-title">Features</span>
-          </div>
-          <div className="display-specs-table">
-            <div className="display-specs-ul">
-                <span className="display-specs-not-li" >
-                  <div className="display-specs-title-container">
-                    <span>Language(s)</span> 
-                  </div>
-                  <div className="display-specs-row-value">E (Everyone)</div>              
-                </span>
-            </div>
-          </div>
-        </div>
-        <div className="display-specs-line-break-wrapper"><hr className="display-specs-presentation"/></div>
-
-        <div className="display-specs-cateogry-wrapper">
-          <div className="display-specs-section-title-container">
-            <span className="display-specs-section-title">{"Certifications & Listings"}</span>
-          </div>
-          <div className="display-specs-table">
-            <ul className="display-specs-ul">
-              {headers.map((title, index) => (
-                <li className="display-specs-li" key={index}>
-                  <div className="display-specs-title-container">
-                    <span>{title}</span> 
-                  </div>
-                  <div className="display-specs-row-value">E (Everyone)</div>              
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-        <div className="display-specs-line-break-wrapper"><hr className="display-specs-presentation"/></div>
-
-        <div className="display-specs-cateogry-wrapper">
-          <div className="display-specs-section-title-container">
-            <span className="display-specs-section-title">Compatibility</span>
-          </div>
-          <div className="display-specs-table">
-            <ul className="display-specs-ul">
-              {headers.map((title, index) => (
-                <li className="display-specs-li" key={index}>
-                  <div className="display-specs-title-container">
-                    <span>{title}</span> 
-                  </div>
-                  <div className="display-specs-row-value">E (Everyone)</div>              
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-        <div className="display-specs-line-break-wrapper"><hr className="display-specs-presentation"/></div>
 
         <div className="display-specs-cateogry-wrapper">
           <div className="display-specs-section-title-container">
@@ -123,12 +76,12 @@ const Specs = props => {
           </div>
           <div className="display-specs-table">
             <ul className="display-specs-ul">
-              {headers.map((title, index) => (
+              {props.requirements_title.length > 0 && props.requirements_title.map((title, index) => (
                 <li className="display-specs-li" key={index}>
                   <div className="display-specs-title-container">
                     <span>{title}</span> 
                   </div>
-                  <div className="display-specs-row-value">E (Everyone)</div>              
+                  <div className="display-specs-row-value">{props.requirements[index]}</div>              
                 </li>
               ))}
             </ul>
@@ -144,9 +97,9 @@ const Specs = props => {
             <div className="display-specs-ul">
                 <span className="display-specs-not-li" >
                   <div className="display-specs-title-container">
-                    <span>Language(s)</span> 
+                    <span>{props.other_title}</span> 
                   </div>
-                  <div className="display-specs-row-value">E (Everyone)</div>              
+                  <div className="display-specs-row-value">{props.other}</div>              
                 </span>
             </div>
           </div>

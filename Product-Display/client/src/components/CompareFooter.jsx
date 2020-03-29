@@ -20,7 +20,7 @@ const CompareFooter = (props) => {
                                  <img className="display-comparefooter-image-container-img" src={props.image}></img>
                              </div>
                              <div className="display-comparefooter-compare-text-container">
-                                <span className="display-comparefooter-compare-title">{props.title}</span>
+                                <span className="display-comparefooter-compare-title">{props.item_name}</span>
                              </div>
                              <div className="display-comparefooter-compare-x">
                                  <button className="display-comparefooter-remove-button ion-close" onClick={props.toggle}></button>

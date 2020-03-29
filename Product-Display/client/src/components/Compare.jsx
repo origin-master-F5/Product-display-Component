@@ -70,7 +70,7 @@ changeBoxColorWhite() {
           </div>
            <div>
              <div className={this.state.showComparison ? "display-compare-footer" : "display-compare-footer-none"}>
-               <CompareFooter image={this.props.image} title={this.props.title} toggle={this.handleToggle}/>
+               <CompareFooter image={this.props.image} item_name={this.props.item_name} toggle={this.handleToggle}/>
             </div>
            </div>
         </div>

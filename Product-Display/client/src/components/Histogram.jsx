@@ -1,4 +1,5 @@
 import React from 'react';
+import $ from 'jquery';
 
 class Histogram extends React.Component {
     constructor(props){
@@ -6,9 +7,38 @@ class Histogram extends React.Component {
         this.state = {
 
         }
+        this.getPosition = this.getPosition.bind(this);
+    }
+
+    getPosition(){
+        this.props.expandReviews('display-specs');
+    }
+    
+    componentDidMount() {
+        $('a[href*="#"]').on('click', function(e) {
+            e.preventDefault()
+          
+            $('html, body').animate(
+              {
+                scrollTop: $($(this).attr('href')).offset().top,
+              },
+              90,
+              'linear'
+            )
+          }) 
     }
 
     render() {
+        if (this.props.reviews_breakdown.length > 0) {
+            var reviews = this.props.reviews_breakdown;
+            var total = this.props.reviews_count;
+            var percentage = [];
+            for (let i = 0; i < reviews.length; i++) {
+              let num = Math.round((reviews[i]/total) * 100)
+              percentage.push(num.toString());
+            }
+        }
+
     return (
         <div className="display-histogram-popover" >
             <span>
@@ -22,10 +52,12 @@ class Histogram extends React.Component {
                         </span>
                         {/* set custom width */}
                         <span className="display-histogram-progress">
-                            <span className="display-histogram-progress-bar" style={{width: "86%"}}>
+                            <span className="display-histogram-progress-bar" style={{width: percentage[0] + "%"}}>
                             </span>
-                        </span><span className="display-histogram-percent">18,180</span>
+                        </span><span className="display-histogram-percent">{reviews[0]}</span>
                     </div>
+
+
                     <div className="display-histogram-rating-bar display-histogram-child">
                         {/* add anchor here */}
                         <span className="display-histogram-sr-only"></span>
@@ -35,10 +67,12 @@ class Histogram extends React.Component {
                         </span>
                         {/* set custom width */}
                         <span className="display-histogram-progress" >
-                            <span className="display-histogram-progress-bar" style={{width: "13%"}}>
+                            <span className="display-histogram-progress-bar" style={{width: percentage[1] + "%"}}>
                             </span>
-                        </span><span className="display-histogram-percent">1,998</span>
+                        </span><span className="display-histogram-percent">{reviews[1]}</span>
                     </div>
+
+
                     <div className="display-histogram-rating-bar display-histogram-child">
                         {/* add anchor here */}
                         <span className="display-histogram-sr-only"></span>
@@ -48,10 +82,12 @@ class Histogram extends React.Component {
                         </span>
                         {/* set custom width */}
                         <span className="display-histogram-progress">
-                            <span className="display-histogram-progress-bar" style={{width: "5%"}}>
+                            <span className="display-histogram-progress-bar" style={{width: percentage[2] + "%"}}>
                             </span>
-                        </span><span className="display-histogram-percent">190</span>
+                        </span><span className="display-histogram-percent">{reviews[2]}</span>
                     </div>
+
+
                     <div className="display-histogram-rating-bar display-histogram-child">
                         {/* add anchor here */}
                         <span className="display-histogram-sr-only"></span>
@@ -61,10 +97,12 @@ class Histogram extends React.Component {
                         </span>
                         {/* set custom width */}
                         <span className="display-histogram-progress">
-                            <span className="display-histogram-progress-bar" style={{width: "0%"}}>
+                            <span className="display-histogram-progress-bar" style={{width: percentage[3] + "%"}}>
                             </span>
-                        </span><span className="display-histogram-percent">22</span>
+                        </span><span className="display-histogram-percent">{reviews[3]}</span>
                     </div>
+
+
                     <div className="display-histogram-rating-bar display-histogram-child">
                         {/* add anchor here */}
                         <span className="display-histogram-sr-only"></span>
@@ -74,11 +112,17 @@ class Histogram extends React.Component {
                         </span>
                         {/* set custom width */}
                         <span className="display-histogram-progress">
-                            <span className="display-histogram-progress-bar" style={{width: "0%"}}>
+                            <span className="display-histogram-progress-bar" style={{width: percentage[4] + "%"}}>
                             </span>
-                        </span><span className="display-histogram-percent">25</span>
+                        </span><span className="display-histogram-percent">{reviews[4]}</span>
                     </div>
-                    <span className="display-histogram-read-reviews-link">Read Reviews</span>
+
+
+                    <span className="display-histogram-read-reviews-link" onClick={this.getPosition}> 
+                    <a href="#display-open-sesame">Read Reviews</a>
+                    
+                    </span>
+                    
                 </div>
             </span>
             <div className="display-histogram-arrow"></div>
