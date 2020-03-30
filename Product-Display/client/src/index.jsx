@@ -65,10 +65,12 @@ constructor(props) {
 getProducts(){
   Axios.get('/product')
   .then(results => {
+    let nameandCategory = results.data[0].name + ' - ' + results.data[0].category;
+    console.log('name', nameandCategory);
    this.setState({
      entire_product: results.data,
      main_image: results.data[0].images[0],
-     item_name: results.data[0].name + ' - ' + results.data[0].category,
+     item_name: nameandCategory,
      nav_categories: results.data[0].header_titles,
      static_img: results.data[0].images[0],
      price: results.data[0].price, 
@@ -126,11 +128,11 @@ getPerItemName(sku) {
     }
     let newarray= [];
     newarray.push(results.data);
-    console.log('nearray', newarray);
+    let nameandCategory = results.data.name + ' - ' + results.data.category;
     this.setState({
       entire_product: newarray,
       main_image: results.data.images[0],
-      item_name: results.data.name + ' - ' + results.data.category,
+      item_name: nameandCategory,
       nav_categories: results.data.header_titles,
       static_img: results.data.images[0],
       price: results.data.price, 
@@ -175,11 +177,11 @@ getNewItem(sku) {
         }
         let newarray= [];
         newarray.push(results.data);
-        console.log('nearray', newarray);
+        let nameandCategory = results.data.name + ' - ' + results.data.category;
         this.setState({
           entire_product: newarray,
           main_image: results.data.images[0],
-          item_name: results.data.name + ' - ' + results.data.category,
+          item_name: nameandCategory,
           nav_categories: results.data.header_titles,
           static_img: results.data.images[0],
           price: results.data.price, 
@@ -295,6 +297,7 @@ render() {
         manu_img={this.state.manu_img}
         questions_img={this.state.questions_img}/>
       </div>
+      <div className="display-footer"></div>
     </div>
   )
 }
