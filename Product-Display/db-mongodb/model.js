@@ -22,7 +22,7 @@ const productSchema = new mongoose.Schema({
   included: String,
   header_titles: [String],
   still_img_videos: [String],
-  miniplayer_videos: [String],
+  miniplayer_videos: String,
   video_length: [String],
   reviews_count: Number,
   reviews_breakdown: [Number],

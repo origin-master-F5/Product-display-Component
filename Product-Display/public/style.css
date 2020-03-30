@@ -1107,9 +1107,10 @@ strong {
     height: 50px;
     width: 50px; 
     display: flex;
-    padding: 10px;
+    padding-top: 10px;
     padding-right: 0;
     padding-left: 15px;
+    padding-bottom: 5px;
 }
 
 .display-comparefooter-image-container-img {

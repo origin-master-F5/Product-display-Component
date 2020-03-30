@@ -35,7 +35,6 @@ calculateRating() {
   var weightedNumerator = 0;
   var weightedDenominator = 0;
   var count = 5;
-  console.log('rev', reviews);
   for(let i = 0; i < reviews.length; i++) {
    weightedNumerator += (reviews.length - i) * reviews[i];
    weightedDenominator += reviews[i];
@@ -105,15 +104,6 @@ render() {
     <div>
        <div className="display-stars">
         <div className="display-ratings-reviews" onClick={this.calculateRating}>
-            {/* <img src="https://bb-clone.s3-us-west-1.amazonaws.com/general/geek_stars.png" height="19"/>
-            <img src="https://bb-clone.s3-us-west-1.amazonaws.com/general/geek_stars.png" height="19"/>
-            <img src="https://bb-clone.s3-us-west-1.amazonaws.com/general/geek_stars.png" height="19"/>
-            <img src="https://bb-clone.s3-us-west-1.amazonaws.com/general/geek_stars.png" height="19"/>
-            <img src="https://bb-clone.s3-us-west-1.amazonaws.com/general/geek_stars.png" height="19"/>
-            <div className="display-c-reviews">
-                <span className="display-star-rate">4.9</span>
-                <span className="display-star-review">({this.props.reviews_count} Reviews) </span>
-            </div> */}
             {this.calculateRating()}
        
         <span className="display-answered-questions">

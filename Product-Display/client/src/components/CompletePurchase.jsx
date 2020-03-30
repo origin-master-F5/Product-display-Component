@@ -5,6 +5,7 @@ const CompletePurchase = props => {
      var sumofArray = (acc, curr) => acc + curr;
      var reduced = props.bundle_total.reduce((sumofArray))
      var sum = Number(props.price) + reduced;
+     sum = sum.toFixed(2);
    }
     return (
         <div className="display-container-row-3">

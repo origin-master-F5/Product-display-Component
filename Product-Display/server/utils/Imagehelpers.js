@@ -1,0 +1,25 @@
+const images = ["https://bb-clone.s3-us-west-1.amazonaws.com/randomImages_2/1.png", "https://bb-clone.s3-us-west-1.amazonaws.com/randomImages_2/10.png", "https://bb-clone.s3-us-west-1.amazonaws.com/randomImages_2/11.png", "https://bb-clone.s3-us-west-1.amazonaws.com/randomImages_2/12.png", "https://bb-clone.s3-us-west-1.amazonaws.com/randomImages_2/13.png", "https://bb-clone.s3-us-west-1.amazonaws.com/randomImages_2/14.png", "https://bb-clone.s3-us-west-1.amazonaws.com/randomImages_2/15.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages_2/16.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages_2/17.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages_2/18.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages_2/19.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages_2/2.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages_2/20.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages_2/3.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages_2/4.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages_2/5.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages_2/6.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages_2/7.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages_2/8.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages_2/9.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages/10.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages/11.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages/12.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages/13png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages/14.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages/15.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages/16.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages/17.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages/18.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages/19.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages/2.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages/20.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages/21.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages/22.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages/23.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages/24.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages/25.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages/26.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages/27.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages/28.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages/29.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages/3.png", "https://bb-clone.s3-us-west-1.amazonaws.com/randomImages/30.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages/31.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages/32png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages/33.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages/34.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages/35.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages/36.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages/37.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages/4.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages/5.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages/6.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages/7.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages/8.png","https://bb-clone.s3-us-west-1.amazonaws.com/randomImages/9.png"];
+
+const mainImages = ["https://bb-clone.s3-us-west-1.amazonaws.com/mainImages/1.png", "https://bb-clone.s3-us-west-1.amazonaws.com/mainImages/2.png", "https://bb-clone.s3-us-west-1.amazonaws.com/mainImages/3.png", "https://bb-clone.s3-us-west-1.amazonaws.com/mainImages/4.png", "https://bb-clone.s3-us-west-1.amazonaws.com/mainImages/5.png", "https://bb-clone.s3-us-west-1.amazonaws.com/mainImages/6.png","https://bb-clone.s3-us-west-1.amazonaws.com/mainImages/7.png", "https://bb-clone.s3-us-west-1.amazonaws.com/mainImages/8.png", "https://bb-clone.s3-us-west-1.amazonaws.com/mainImages/9.png", "https://bb-clone.s3-us-west-1.amazonaws.com/mainImages/10.png" ];
+
+const max = 8;
+const min = 2; // 3 including main
+
+function randomImagePacker(order) {
+    let arr = [];
+    // at least 3 images, max being 8;
+    arr.push(mainImages[order]);
+    let count = Math.floor(Math.random() * (max - min + 1) + min);
+    // push mainimage first and random ones next
+    for (let i = 0; i < count; i++) {
+        let index = Math.floor(Math.random() * images.length);
+        arr.push(images[index]);
+    }
+    return arr;
+};
+
+module.exports = {
+    images,
+    mainImages,
+    randomImagePacker
+}

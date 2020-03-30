@@ -29,7 +29,7 @@ constructor(props) {
    bundle_total: [],
    geek_squad_price: 0,
    still_img_videos: [],
-   miniplayer_videos: [],
+   miniplayer_videos: "",
    reviews_breakdown: [],
    reviews_count: 0,
    questions: 0,
@@ -49,7 +49,9 @@ constructor(props) {
    other:"",
    manu_img: "",
    questions_img: "",
-   video_length:[]
+   video_length:[], 
+   category:"",
+   compatible_platforms:[]
   };
   this.getProducts = this.getProducts.bind(this);
   this.changeProduct = this.changeProduct.bind(this);
@@ -94,7 +96,9 @@ getProducts(){
      other_title: results.data[0].other_title,
      manu_img: results.data[0].manufacturer_img,
      questions_img: results.data[0].questions_img,
-     video_length: results.data[0].video_length
+     video_length: results.data[0].video_length,
+     category: results.data[0].category,
+     compatible_platforms: results.data[0].compatible_platforms
    }, () => console.log('product', results.data[0].keyspecs_title))
   })
   .catch( err => console.log('err fetching data port 3002', err))
@@ -154,7 +158,9 @@ getPerItemName(sku) {
       other_title: results.data.other_title,
       manu_img: results.data.manufacturer_img,
       questions_img: results.data.questions_img,
-      video_length: results.data.video_length
+      video_length: results.data.video_length, 
+      category: results.data.category,
+      compatible_platforms: results.data.compatible_platforms
     })
 })
 .catch(err => console.log(err))
@@ -201,7 +207,9 @@ getNewItem(sku) {
           other_title: results.data.other_title,
           manu_img: results.data.manufacturer_img,
           questions_img: results.data.questions_img,
-          video_length: results.data.video_length
+          video_length: results.data.video_length,
+          category: results.data.category,
+          compatible_platforms: results.data.compatible_platforms
         })
     })
     .catch(err => console.log(err))
@@ -235,7 +243,7 @@ render() {
     <div>
       <div className="display-container">
         <div className="display-right-sidebar-container">
-          <Sidebar />
+          <Sidebar category={this.state.category}/>
         </div>
         <div className="display-nav-row">
             <Header nav_categories={this.state.nav_categories}/>
@@ -265,11 +273,11 @@ render() {
            </div>
 
            <div className="display-container-col-2">
-           <Form entire_product={this.state.entire_product} image={this.state.main_image} item_name={this.state.item_name_no_category} geek_squad_price={this.state.geek_squad_price}/>
+           <Form entire_product={this.state.entire_product} image={this.state.main_image} item_name={this.state.item_name_no_category} geek_squad_price={this.state.geek_squad_price} compatible_platforms={this.state.compatible_platforms}/>
           </div> 
          
         < CompletePurchase static_img={this.state.static_img} price={this.state.price} bundle_img={this.state.bundle_img} bundle_total={this.state.bundle_total}/>
-        <Bought />
+        <Bought category={this.state.category}/>
         <Accordion ref={this.openOneAccordion} 
         description={this.state.description} 
         features={this.state.features} 

@@ -1,6 +1,7 @@
 const db = require('../../db-mongodb');
 const Product = require('../../db-mongodb/model');
 const games =require('./games.js');
+const ps4_one = require('./ps4seed1.json');
 
 
 // const data = [
@@ -28,6 +29,7 @@ const games =require('./games.js');
 
 var seedDB = () => {
   Product.create(games)
+  return Product.create(ps4_one)
   .then(()=> console.log('seeded data to mongo'))
   
 }

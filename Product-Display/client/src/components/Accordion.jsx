@@ -12,6 +12,7 @@ class Accordion extends React.Component {
 
    }
    this.openAccordion = this.openAccordion.bind(this);
+   this.hasManufacturer = this.hasManufacturer.bind(this);
   }
 
   openAccordion(name){
@@ -20,6 +21,23 @@ class Accordion extends React.Component {
         overview.style.maxHeight = null;
     } else {
         overview.style.maxHeight = overview.scrollHeight + "px";
+    }
+  }
+
+  hasManufacturer(){
+    if (this.props.manu_img.length > 0 ) {
+      console.log('has manu', this.props.manu_img.length);
+      return (
+        <div>
+           <button className="display-accordion-trigger" onClick={() => this.openAccordion('display-manu')}>
+                   <span className="display-accordion-trigger-label">From the Manufacturer</span>
+                   <span className="display-overview-accordion-trigger-caret ion-chevron-down"></span>
+               </button>
+               <div id="display-manu" className="display-accordion-content" style={{maxHeight:null}}>
+                  <Manufacturer manu_img={this.props.manu_img} />
+               </div>
+        </div>
+      )
     }
   }
 
@@ -74,15 +92,16 @@ class Accordion extends React.Component {
               <div id="display-qanda"className="display-accordion-content" style={{maxHeight:null}}>
                 <Questions questions_img={this.props.questions_img}/>
               </div>
-             
-              <button className="display-accordion-trigger" onClick={() => this.openAccordion('display-manu')}>
+            
+             {/* <button className="display-accordion-trigger" onClick={() => this.openAccordion('display-manu')}>
                    <span className="display-accordion-trigger-label">From the Manufacturer</span>
                    <span className="display-overview-accordion-trigger-caret ion-chevron-down"></span>
                </button>
                <div id="display-manu" className="display-accordion-content" style={{maxHeight:null}}>
                   <Manufacturer manu_img={this.props.manu_img} />
-               </div>
-            
+               </div> */}
+              {this.hasManufacturer()}
+
           </div>
       </div>
     )

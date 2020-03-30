@@ -17,7 +17,7 @@ const Videos = props => {
                    <div className="display-productmodal-scroll-area">
                    <div className="display-productmodal-content">
                        <ol className="display-videos-carousel-indicate" >
-                           {video_images.map((image, i) => (
+                           {props.still_img_videos.map((image, i) => (
                                 <li className="display-videos-thumbnail-content" key={i}>
                                     <div className="display-videos-thumbnail-container-videos">
                                         <button className="display-videos-thumbnail-button">
@@ -45,7 +45,7 @@ const Videos = props => {
                                       <div className="display-videos-video-content">
                                           <div className="display-videos-video-player-wrapper">
 
-                                          <video playsInline="" controlsList="nodownload" className="display-video-player" title="Mario Kart 8 Deluxe Trailer" crossOrigin="anonymous" style={{height: "100%", width: "100%"}}><source src="https://sc.liveclicker.net/service/qr?1858858501&amp;mobile=true"></source>
+                                          <video playsInline="" controlsList="nodownload" className="display-video-player" title="Mario Kart 8 Deluxe Trailer" crossOrigin="anonymous" style={{height: "100%", width: "100%"}}><source src={props.miniplayer_videos}></source>
 
                                           </video>
                                           <div className="display-videos-hover-wrapper">

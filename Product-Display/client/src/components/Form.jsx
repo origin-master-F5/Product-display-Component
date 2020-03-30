@@ -58,7 +58,7 @@ class Form extends React.Component {
                 <button className="display-rich-dropdown-trigger" >
                     <span className="display-variation-dropdown-tile" >
                     <span className="display-variation-image-wrapper" >
-                        <img className="display-variation-tile-image" src="https://bb-clone.s3-us-west-1.amazonaws.com/general/tile_image_switch.png" /> 
+                        <img className="display-variation-tile-image" src={this.props.compatible_platforms[0]} /> 
                     </span>
                     <i id="display-chevron-tile"className="up-icon ion-chevron-down" onClick={this.showDropDown}></i>
                     </span>
@@ -72,7 +72,7 @@ class Form extends React.Component {
                    <button className="display-rich-dropdown-trigger " >
                                 <span className="display-variation-dropdown-tile display-dropdown-show" >
                                 <span className="display-variation-image-wrapper" >
-                                    <img className="display-variation-tile-image" src="https://bb-clone.s3-us-west-1.amazonaws.com/general/tile_image_switch.png" /> 
+                                    <img className="display-variation-tile-image" src={this.props.compatible_platforms[0]} /> 
                                 </span>
                                 </span>
                     </button>
@@ -81,7 +81,7 @@ class Form extends React.Component {
                     <button className="display-rich-dropdown-trigger " >
                         <span className="display-variation-dropdown-tile display-dropdown-show" >
                         <span className="display-variation-image-wrapper" >
-                            <img className="display-variation-tile-image" src="https://bb-clone.s3-us-west-1.amazonaws.com/general/tile_image_wii.png" /> 
+                            <img className="display-variation-tile-image" src={this.props.compatible_platforms[1]} /> 
                         </span>
                         </span>
                     </button>

@@ -20,6 +20,7 @@ import Videos from './Videos.jsx';
       this.renderTabs = this.renderTabs.bind(this);
       this.selectVideoTab = this.selectVideoTab.bind(this);
       this.updateViewer = this.updateViewer.bind(this);
+      this.hasVideo = this.hasVideo.bind(this);
     }
 
     handleClickOutsideModal(e) {
@@ -72,6 +73,25 @@ import Videos from './Videos.jsx';
             image_selected: img,
             video_selected: vid
           })
+      }
+
+      hasVideo() {
+        if(this.props.entire_product[0].still_img_videos.length > 0) {
+          return(
+            <div className="display-productmodal-v-border-bottom">
+                    <button className={this.state.image_selected ? "display-productmodal-tab-title-selected" : "display-productmodal-tab-title"} onClick={this.selectOtherTab}>Product Images</button>
+                    <button className={this.state.video_selected ? 
+                    "display-productmodal-tab-video-selected" : 
+                    "display-productmodal-tab-video"} onClick={this.selectOtherTab}>Videos</button>
+                </div>
+          )
+        } else {
+          return (
+            <div className="display-productmodal-v-border-bottom">
+                    <button className={this.state.image_selected ? "display-productmodal-tab-title-selected" : "display-productmodal-tab-title"} onClick={this.selectOtherTab}>Product Images</button>
+           </div>
+          )
+        }
       }
 
       renderTabs() {
@@ -128,12 +148,14 @@ import Videos from './Videos.jsx';
          <div className="modal-main" ref={this.modal_window} >
            <div className="display-productmodal-modal-small-view">
              <div className="display-productmodal-content-container">
-                <div className="display-productmodal-v-border-bottom">
+                {this.hasVideo()}
+                {/* <div className="display-productmodal-v-border-bottom">
                     <button className={this.state.image_selected ? "display-productmodal-tab-title-selected" : "display-productmodal-tab-title"} onClick={this.selectOtherTab}>Product Images</button>
                     <button className={this.state.video_selected ? 
                     "display-productmodal-tab-video-selected" : 
                     "display-productmodal-tab-video"} onClick={this.selectOtherTab}>Videos</button>
-                </div>
+                </div> */}
+
                 <div className="display-productmodal-tab-content-wrapper">
                     {this.renderTabs()}
                 </div>

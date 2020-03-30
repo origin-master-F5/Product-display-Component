@@ -56,17 +56,33 @@ class ProductImageList extends React.Component {
      if (this.props.entire_product[0].images.length < 5) {
        const itemList = this.props.entire_product[0].images;
        return (
-          <ul className="display-thumbnail-list">
-           {itemList.map((item, index) => (
-           <li key={index} className="display-image-thumbnail" onClick={()=>this.showModal(index)} >
-             <div  className={"display-thumbnail-container"}>
-               <button className="display-image-button" onMouseEnter={() => this.onHover(index)}>
-                   <img className="display-individual-images" src={item} onMouseEnter={this.props.changeP} id={item}/>
-               </button>
-             </div>
-            </li>
-           ))}
-         </ul> 
+         <div>
+            <ProductModal show={this.state.show} 
+            close={this.hideModal} 
+            selected={this.state.tab_selected}
+            video={this.state.video_selected}
+            entire_product={this.props.entire_product}
+            imgIndex={this.state.selected_index}
+            ref={this.viewProductInModal}
+            still_img_videos={this.props.still_img_videos}
+            miniplayer_videos={this.props.miniplayer_videos}
+            video_length={this.props.video_length}
+            />
+
+              <ul className="display-thumbnail-list">
+              {itemList.map((item, index) => (
+              <li key={index} className="display-image-thumbnail" onClick={()=>this.showModal(index)} >
+                <div  className={"display-thumbnail-container"}>
+                  <button className="display-image-button" onMouseEnter={() => this.onHover(index)}>
+                      <img className="display-individual-images" src={item} onMouseEnter={this.props.changeP} id={item}/>
+                  </button>
+                </div>
+                </li>
+              ))}
+              {this.props.still_img_videos.length > 0 && <VideoImageList click={this.showVideoModal} still_img_videos={this.props.still_img_videos}/>}
+            </ul> 
+
+         </div>
        )
      }
      else {
@@ -77,7 +93,6 @@ class ProductImageList extends React.Component {
      
       return (
         <div>
-          
           <ProductModal show={this.state.show} 
           close={this.hideModal} 
           selected={this.state.tab_selected}
@@ -112,24 +127,15 @@ class ProductImageList extends React.Component {
               </button>
             </div>
             </li>
-            <VideoImageList click={this.showVideoModal} still_img_videos={this.props.still_img_videos}/>
+            {this.props.still_img_videos.length > 0 && <VideoImageList click={this.showVideoModal} still_img_videos={this.props.still_img_videos}/>}
           </ul> 
         </div>
       )
     }
-   }
-
-    // slice so it's only 5.
-    // on last item only, apply the overlay css
-    
-
-    
-   
-    
+   }    
   }
 
-  render() {
-      
+  render() {    
     return (
      <div>
        {this.renderList()}
