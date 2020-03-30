@@ -6,8 +6,8 @@ import Videos from './Videos.jsx';
       super(props);
       this.modal_window = React.createRef();
       this.state = {
-       products : this.props.product,
-       product_viewer: this.props.product[0].images[0],
+       entire_products : this.props.entire_product,
+       product_viewer: this.props.entire_product[0].images[0],
        zoom_selected: false,
        imgIndex: this.props.imgIndex,
        image_selected: true,
@@ -18,6 +18,9 @@ import Videos from './Videos.jsx';
       this.changeProduct = this.changeProduct.bind(this);
       this.selectOtherTab = this.selectOtherTab.bind(this);
       this.renderTabs = this.renderTabs.bind(this);
+      this.selectVideoTab = this.selectVideoTab.bind(this);
+      this.updateViewer = this.updateViewer.bind(this);
+      this.hasVideo = this.hasVideo.bind(this);
     }
 
     handleClickOutsideModal(e) {
@@ -43,9 +46,24 @@ import Videos from './Videos.jsx';
 
       changeProduct(i) {
        this.setState({
-           product_viewer: this.props.product[0].images[i],
-           imgIndex: i
+           product_viewer: this.props.entire_product[0].images[i],
+           imgIndex: i,
+           image_selected: true,
+           video_selected: false,
        })
+      }
+
+      updateViewer() {
+        this.setState({
+          product_viewer: this.props.entire_product[0].images[0]
+      })
+     }
+
+      selectVideoTab(){
+        this.setState({
+            image_selected: false,
+            video_selected: true
+          })
       }
 
       selectOtherTab() {
@@ -57,6 +75,25 @@ import Videos from './Videos.jsx';
           })
       }
 
+      hasVideo() {
+        if(this.props.entire_product[0].still_img_videos.length > 0) {
+          return(
+            <div className="display-productmodal-v-border-bottom">
+                    <button className={this.state.image_selected ? "display-productmodal-tab-title-selected" : "display-productmodal-tab-title"} onClick={this.selectOtherTab}>Product Images</button>
+                    <button className={this.state.video_selected ? 
+                    "display-productmodal-tab-video-selected" : 
+                    "display-productmodal-tab-video"} onClick={this.selectOtherTab}>Videos</button>
+                </div>
+          )
+        } else {
+          return (
+            <div className="display-productmodal-v-border-bottom">
+                    <button className={this.state.image_selected ? "display-productmodal-tab-title-selected" : "display-productmodal-tab-title"} onClick={this.selectOtherTab}>Product Images</button>
+           </div>
+          )
+        }
+      }
+
       renderTabs() {
           if (this.state.image_selected) {
               return (
@@ -66,7 +103,7 @@ import Videos from './Videos.jsx';
                         <div className="display-productmodal-scroll-area">
                         <div className="display-productmodal-content">
                             <ol className="display-productmodal-carousel-indicate">
-                              {this.props.product[0].images.map((image, index) => (
+                              {this.props.entire_product[0].images.map((image, index) => (
                                 <li className="display-productmodal-thumbnail-content" key={index} onClick={() => this.changeProduct(index)}>
                                    <div className={this.state.imgIndex === index ? "display-productmodal-thumbnail-container-selected" : "display-productmodal-thumbnail-container"} index={index}>
                                      <div className="display-productmodal-image-button">
@@ -85,9 +122,9 @@ import Videos from './Videos.jsx';
                  <div className="display-productmodal-primary-media-wrapper">
                    <div className="display-productmodal-item-image-wrapper">
                    <div className="display-productmodal-primary-image-container">
-                      <button className="display-productmodal-primary-button">
+                      <button className="display-productmodal-primary-button" onClick={this.toggleZoom}>
                        <img className={this.state.zoom_selected ? "display-productmodal-primary-image-zoomed" : "display-productmodal-primary-image-zoomable"} src={this.state.product_viewer} onClick={this.toggleZoom}></img>
-                      <span className="display-productmodal-carousel-message" onClick={this.toggleZoom}>Click or tap to zoom</span>
+                      <span className="display-productmodal-carousel-message" >Click or tap to zoom</span>
                       </button>
                    </div>
                 </div>
@@ -98,7 +135,7 @@ import Videos from './Videos.jsx';
           }
 
           return (
-              <Videos />
+              <Videos still_img_videos={this.props.still_img_videos} miniplayer_videos={this.props.miniplayer_videos} trailer_title={this.props.entire_product[0].name} video_length={this.props.video_length}/>
           )
       }
       
@@ -111,18 +148,22 @@ import Videos from './Videos.jsx';
          <div className="modal-main" ref={this.modal_window} >
            <div className="display-productmodal-modal-small-view">
              <div className="display-productmodal-content-container">
-                <div className="display-productmodal-v-border-bottom">
+                {this.hasVideo()}
+                {/* <div className="display-productmodal-v-border-bottom">
                     <button className={this.state.image_selected ? "display-productmodal-tab-title-selected" : "display-productmodal-tab-title"} onClick={this.selectOtherTab}>Product Images</button>
                     <button className={this.state.video_selected ? 
                     "display-productmodal-tab-video-selected" : 
                     "display-productmodal-tab-video"} onClick={this.selectOtherTab}>Videos</button>
-                </div>
+                </div> */}
+
                 <div className="display-productmodal-tab-content-wrapper">
                     {this.renderTabs()}
-                    
                 </div>
              </div>
            </div>
+           <button className="display-productmodal-c-close-icon" onClick={() => this.props.close()}>
+              <img src="https://bb-clone.s3-us-west-1.amazonaws.com/general/close_icon.png" height="15"></img>
+           </button>
         </div>
       </div>
     </div>

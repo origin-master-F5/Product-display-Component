@@ -6,7 +6,7 @@ const router = require('./router');
 const port = 3002;
 
 const app = express();
-
+// PRODUCT DISPLAY
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));

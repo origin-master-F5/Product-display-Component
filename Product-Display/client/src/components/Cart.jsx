@@ -2,7 +2,6 @@ import React from 'react';
 import CartModal from './CartModal.jsx';
 
 
-
 class Cart extends React.Component {
     constructor(props){
         super(props);
@@ -58,7 +57,6 @@ class Cart extends React.Component {
     }
 
     handleClickOutsideModal(e) {
-    
         if (this.cartRef.current && !this.cartRef.current.contains(e.target)) {
         this.closeModal();
         }
@@ -73,7 +71,7 @@ class Cart extends React.Component {
                {this.renderButton()}
             </div>
            </div>
-           <CartModal show={this.state.show} close={this.closeModal} ref={this.cartRef}/>
+           <CartModal show={this.state.show} close={this.closeModal} ref={this.cartRef} category={this.props.category}/>
         </div>
     )
   }

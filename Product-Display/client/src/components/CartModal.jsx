@@ -29,7 +29,7 @@ const CartModal = React.forwardRef((props, ref) => {
                             </div>
                         </div>
                         <div className="display-cartmodal-wrapper"ref={ref}>
-                          <Suggestions />
+                          <Suggestions category={props.category}/>
                         </div>
                     </div>
                 </div>

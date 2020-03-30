@@ -58,7 +58,7 @@ class Form extends React.Component {
                 <button className="display-rich-dropdown-trigger" >
                     <span className="display-variation-dropdown-tile" >
                     <span className="display-variation-image-wrapper" >
-                        <img className="display-variation-tile-image" src="https://bb-clone.s3-us-west-1.amazonaws.com/general/tile_image_switch.png" /> 
+                        <img className="display-variation-tile-image" src={this.props.compatible_platforms[0]} /> 
                     </span>
                     <i id="display-chevron-tile"className="up-icon ion-chevron-down" onClick={this.showDropDown}></i>
                     </span>
@@ -72,7 +72,7 @@ class Form extends React.Component {
                    <button className="display-rich-dropdown-trigger " >
                                 <span className="display-variation-dropdown-tile display-dropdown-show" >
                                 <span className="display-variation-image-wrapper" >
-                                    <img className="display-variation-tile-image" src="https://bb-clone.s3-us-west-1.amazonaws.com/general/tile_image_switch.png" /> 
+                                    <img className="display-variation-tile-image" src={this.props.compatible_platforms[0]} /> 
                                 </span>
                                 </span>
                     </button>
@@ -81,7 +81,7 @@ class Form extends React.Component {
                     <button className="display-rich-dropdown-trigger " >
                         <span className="display-variation-dropdown-tile display-dropdown-show" >
                         <span className="display-variation-image-wrapper" >
-                            <img className="display-variation-tile-image" src="https://bb-clone.s3-us-west-1.amazonaws.com/general/tile_image_wii.png" /> 
+                            <img className="display-variation-tile-image" src={this.props.compatible_platforms[1]} /> 
                         </span>
                         </span>
                     </button>
@@ -158,7 +158,7 @@ class Form extends React.Component {
               </div>
               <div className="display-price-match-wrapper">
                 <div className="display-price-match-amount" ><span className="display-price-match-dollar">$</span>
-                    {this.props.price.length > 0 ? this.props.price[0].price : '' }  
+                    {this.props.entire_product.length > 0 ? this.props.entire_product[0].price : '' }  
                </div>
               </div>
               
@@ -193,11 +193,11 @@ class Form extends React.Component {
                 <div className="display-format-platform-lowerDivider"></div>
 
              <Geek />             
-             <Geek_Plan />
+             <Geek_Plan geek_squad_price={this.props.geek_squad_price}/>
             <Pickup />
-            <Cart />
+            <Cart category={this.props.category}/>
             <Bundle />
-            <Compare footer={this.props.footer}/>
+            <Compare image={this.props.image} item_name={this.props.item_name}/>
             <Cardmember />
         </div>
       )

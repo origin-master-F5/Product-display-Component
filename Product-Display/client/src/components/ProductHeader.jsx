@@ -1,8 +1,8 @@
 import React from 'react';
 
 const ProductHeader = props => {
-    if (props.product.length > 0) {
-        var {name, model, publisher, product_sku, release_date, esrb_rating} = props.product[0];
+    if (props.entire_product.length > 0) {
+        var {name, model, publisher, product_sku, release_date, esrb_rating} = props.entire_product[0];
        
     }
     return (

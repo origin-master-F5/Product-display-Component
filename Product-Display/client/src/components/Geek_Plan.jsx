@@ -43,6 +43,8 @@ class Geek_Plan extends React.Component {
     }
 
     render() {
+      var price = this.props.geek_squad_price;
+      var payment = (price * .041).toFixed(2);
         return (
             <div>
               <div className="display-geekplan-container">
@@ -55,8 +57,8 @@ class Geek_Plan extends React.Component {
                        <div className="display-geekplan-text">2-Year Geek Squad Product Replacement</div></div>
                   
                     <div className="display-geekplan-subcontainer">
-                     <div className="display-geekplan-text-price">$7.99</div>
-                     <div className="display-geekplan-text-price-monthly">About $0.33/mo.</div>
+                     <div className="display-geekplan-text-price">${price}</div>
+                     <div className="display-geekplan-text-price-monthly">About ${payment}/mo.</div>
                   </div>
             </div>
             <div className="display-geekplan-text-learnmore">Learn more</div>
