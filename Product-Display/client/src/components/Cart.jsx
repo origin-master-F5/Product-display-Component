@@ -71,7 +71,7 @@ class Cart extends React.Component {
                {this.renderButton()}
             </div>
            </div>
-           <CartModal show={this.state.show} close={this.closeModal} ref={this.cartRef}/>
+           <CartModal show={this.state.show} close={this.closeModal} ref={this.cartRef} category={this.props.category}/>
         </div>
     )
   }

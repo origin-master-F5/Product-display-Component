@@ -195,7 +195,7 @@ class Form extends React.Component {
              <Geek />             
              <Geek_Plan geek_squad_price={this.props.geek_squad_price}/>
             <Pickup />
-            <Cart />
+            <Cart category={this.props.category}/>
             <Bundle />
             <Compare image={this.props.image} item_name={this.props.item_name}/>
             <Cardmember />

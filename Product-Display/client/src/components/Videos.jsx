@@ -9,6 +9,7 @@ const Videos = props => {
         var title = props.trailer_title;
         var time = props.video_length[0];
     }
+    console.log('vids', props.miniplayer_videos);
     return (
         <div>
             <div className="display-productmodal-image-content-wrapper display-productmodal-image-content-wrapper-row" >

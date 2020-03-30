@@ -11,7 +11,7 @@ class Histogram extends React.Component {
     }
 
     getPosition(){
-        this.props.expandReviews('display-specs');
+        this.props.expandReviews('display-reviews');
     }
     
     componentDidMount() {

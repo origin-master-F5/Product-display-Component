@@ -10,6 +10,7 @@ class Suggestions extends React.Component {
    //build out if time
    
     render() {
+        console.log('this', this.props.category);
         return (
             <div className="display-suggestions-component">
                 <div className="display-suggestions-carousel">
@@ -23,7 +24,7 @@ class Suggestions extends React.Component {
                             <div className="display-suggestions-arrow-left-icon ion-ios-arrow-left"></div>
                         </button>
                         <div className="display-suggestions-child-items-wrapper">
-                            <img src="https://bb-clone.s3-us-west-1.amazonaws.com/general/slider-placeholder.png" height="300" style={{marginLeft: "25px"}}/>
+                            <img src={this.props.category === "Nintendo Switch" ? "https://bb-clone.s3-us-west-1.amazonaws.com/general/slider-placeholder.png" : "https://bb-clone.s3-us-west-1.amazonaws.com/general/ps4_shopping_image.png"} height="300" style={{marginLeft: "25px"}}/>
                         </div>
                         <button className="display-suggestions-arrow-right" >
                             <div className="display-suggestions-arrow-left-icon ion-ios-arrow-right"></div>

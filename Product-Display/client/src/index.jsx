@@ -99,7 +99,7 @@ getProducts(){
      video_length: results.data[0].video_length,
      category: results.data[0].category,
      compatible_platforms: results.data[0].compatible_platforms
-   }, () => console.log('product', results.data[0].keyspecs_title))
+   })
   })
   .catch( err => console.log('err fetching data port 3002', err))
 }
@@ -273,7 +273,7 @@ render() {
            </div>
 
            <div className="display-container-col-2">
-           <Form entire_product={this.state.entire_product} image={this.state.main_image} item_name={this.state.item_name_no_category} geek_squad_price={this.state.geek_squad_price} compatible_platforms={this.state.compatible_platforms}/>
+           <Form entire_product={this.state.entire_product} image={this.state.main_image} item_name={this.state.item_name_no_category} geek_squad_price={this.state.geek_squad_price} compatible_platforms={this.state.compatible_platforms} category={this.state.category}/>
           </div> 
          
         < CompletePurchase static_img={this.state.static_img} price={this.state.price} bundle_img={this.state.bundle_img} bundle_total={this.state.bundle_total}/>

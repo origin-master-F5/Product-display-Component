@@ -26,7 +26,7 @@ class Accordion extends React.Component {
 
   hasManufacturer(){
     if (this.props.manu_img.length > 0 ) {
-      console.log('has manu', this.props.manu_img.length);
+
       return (
         <div>
            <button className="display-accordion-trigger" onClick={() => this.openAccordion('display-manu')}>
@@ -57,7 +57,7 @@ class Accordion extends React.Component {
                </div>
               
           
-                <button id="display-open-sesame" className="display-accordion-trigger" onClick={() => this.openAccordion('display-specs')}>
+                <button className="display-accordion-trigger" onClick={() => this.openAccordion('display-specs')}>
                    <span className="display-accordion-trigger-label">Specification</span>
                    <span className="display-overview-accordion-trigger-caret ion-chevron-down"></span>
                 </button>
@@ -76,7 +76,7 @@ class Accordion extends React.Component {
                
               </div>
               
-              <button className="display-accordion-trigger" onClick={() => this.openAccordion('display-reviews')}>
+              <button id="display-open-sesame" className="display-accordion-trigger" onClick={() => this.openAccordion('display-reviews')}>
                    <span className="display-accordion-trigger-label">Reviews</span>
                    <span className="display-overview-accordion-trigger-caret ion-chevron-down"></span>
                </button>
